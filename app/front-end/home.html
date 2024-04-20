@@ -8,13 +8,24 @@
 </head>
   <body>
     <!-- Barra de Navegação (Header)-->
-      <nav class="navbar d-flex justify-content-evenly border fs-3">
-        <a class="nav-link active p-3" aria-current="page" href="#">CRM4SH.com</a>          
-        <a class="nav-link active p-3" aria-current="page" href="#informacoes">Informações</a>        
-        <a class="nav-link active p-3" href="#servicos">Serviços</a>
-        <a class="nav-link active p-3" href="#">Imóveis Disponíveis</a>                      
-        <button class="btn btn-outline-dark fs-3" type="submit">Login</button>
-      </nav>
+    <nav class="navbar d-flex justify-content-evenly border fs-3">
+      <a class="nav-link active p-3" aria-current="page" href="#">CRM4SH.com</a>          
+      <a class="nav-link active p-3" aria-current="page" href="#informacoes">Informações</a>        
+      <a class="nav-link active p-3" href="#servicos">Serviços</a>
+      <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
+        
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
+          Login
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item fs-4" href="#">Acessar</a></li>
+          <li><a class="dropdown-item fs-4" href="#">Cadastrar</a></li>
+        </ul>
+      </div>
+
+      
+    </nav>
 
     <!-- Filtro Inicial da Home Page -->
       <div class="conteiner-sm pt-3 m-auto" style="width: 80%;">
@@ -22,18 +33,18 @@
 
             <div class="d-flex mt-3">
 
-              <input class="form-control form-control-lg m-2" list="datalistOptions" id="destino-estado" placeholder="Cidade destino">
+              <input class="form-control form-control-lg m-2 fs-4" list="datalistOptions" id="destino-estado" placeholder="Cidade destino">
               <datalist id="datalistOptions">
                 <option value="Rio de Janeiro">
                 <option value="Acre">
                 <option value="São Paulo">
               </datalist>
 
-              <input class="form-control form-control-lg m-2" type="text" placeholder="Período da viagem">
+              <input class="form-control form-control-lg m-2 fs-4" type="text" placeholder="Período da viagem">
 
-              <input class="form-control form-control-lg m-2" type="text" placeholder="Quantos quartos">
+              <input class="form-control form-control-lg m-2 fs-4" type="text" placeholder="Quantos quartos">
 
-              <button type="button" class="btn btn-outline-dark m-3">Procurar</button>
+              <button type="button" class="btn btn-outline-dark m-2 fs-4">Procurar</button>
 
             </div>        
       </div>
@@ -53,7 +64,7 @@
                 </div>
               </a>
 
-              <a>
+              <a class="" href="#">
                 <div class="card mx-2">
                   <img src="./Pic.Camping.svg" class="card-img" alt="Hotel Fazenda">
                   <div class="card-img-overlay">
@@ -62,7 +73,7 @@
                 </div>
               </a>
 
-              <a>
+              <a class="" href="#">
                 <div class="card mx-2">
                   <img src="./Pic.Hostel.svg" class="card-img" alt="Hotel Fazenda">
                   <div class="card-img-overlay">
@@ -71,7 +82,7 @@
                 </div>
               </a>
 
-              <a>
+              <a class="" href="#">
                 <div class="card mx-2">
                   <img src="./Pic.Hotel.svg" class="card-img" alt="Hotel Fazenda">
                   <div class="card-img-overlay">
@@ -80,7 +91,7 @@
                 </div>
               </a>
 
-              <a>
+              <a class="" href="#">
                 <div class="card mx-2">
                   <img src="./Pic.Praia.svg" class="card-img" alt="Hotel Fazenda">
                   <div class="card-img-overlay">
@@ -131,9 +142,9 @@
         <p class="text-starts fs-1">O nosso sistema foi especialmente desenhado para atender as necessidades de pequenas instalações de alojamento, como hotéis, pensões, albergues e casas de turismo rural. Fornecemos uma solução total de gerenciamento de alojamento e serviços de alimentação, incluindo café da manhã, pequeno almoço e jantar. Na prática, o nosso sistema é entregue em um pacote fácil de instalar e usar. Como resultado, a sua empresa pode implementar o nosso sistema o mais rápido possível, mesmo sem experiência técnica prévia.</p>
       </div>    
       <div class="conteiner-sm pt-3 m-auto" style="width: 80%;">
-        <h2 class="pt-3">Contatos</h2>
+        <h1 class="pt-3">Contatos</h1>
 
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center" style="height: 250px; width: 80%;">
 
           <div class="d-flex flex-column">
             <p class="fs-1">Telefone: (21) 9999-9999</p>
@@ -143,25 +154,22 @@
 
           <div>
 
-            <a href="#">
-              <img src="./facebook.svg" class="card-img" alt="Turismo Rural" style="width: 60px; height: 360px;">
+            <a href="https://www.facebook.com/">
+              <img src="./facebook.svg" class="card-img" alt="Facebook" style="width: 60px; height: 360px;">
             </a>
-            <a href="#">
-              <img src="./whatsapp.svg" class="card-img" alt="Turismo Rural" style="width: 60px; height: 60px;">
+            <a href="https://web.whatsapp.com/">
+              <img src="./whatsapp.svg" class="card-img" alt="Whatsapp" style="width: 60px; height: 60px;">
             </a>
-            <a href="#">
-              <img src="./instagram.svg" class="card-img" alt="Turismo Rural" style="width: 60px; height: 60px;">
+            <a href="https://www.instagram.com/">
+              <img src="./instagram.svg" class="card-img" alt="Instagram" style="width: 60px; height: 60px;">
             </a>
-            <a href="#">
-              <img src="./twitter.svg" class="card-img" alt="Turismo Rural" style="width: 60px; height: 60px;">
+            <a href="https://twitter.com/">
+              <img src="./twitter.svg" class="card-img" alt="Twitter" style="width: 60px; height: 60px;">
             </a>
           </div>
           
-        
-
         </div>
         
-
       </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
