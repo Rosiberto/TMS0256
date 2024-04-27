@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,7 +9,7 @@
 <body>
 <fieldset>Registro Empresa
     <br>
-        <form action="cadastro.php" method="post" class="forms-empresa">
+        <form action="cadastro_empresa.php" method="post" class="forms-empresa">
             <label for="">Nome:</label>
             <input type="text" name="nome-empresa" required>
             <br>
@@ -28,5 +29,13 @@
         </form>
     </fieldset>
     
+<?php 
+
+
+include_once "cadastro_empresa.php";
+
+    
+
+?>
 </body>
 </html>
