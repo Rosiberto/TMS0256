@@ -5,7 +5,7 @@
     $hostname = "localhost";
     $username = "root";
     $password = '';
-    $dbname = "crm4sh";
+    $dbname = "hotel";
 
     $connect= new mysqli("$hostname", "$username", "$password", "$dbname");
 
@@ -16,5 +16,6 @@
     }else{
         echo "sem erros";
     }
+
 
 ?>

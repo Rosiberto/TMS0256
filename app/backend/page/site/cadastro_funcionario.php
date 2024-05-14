@@ -1,6 +1,5 @@
-
-    <?php 
-        include_once("cadastro_funcionario.php");
+<?php 
+        include_once("validate_login_funcionario.php");
     
     ?>
     
@@ -15,18 +14,18 @@
 <body>
 <fieldset>Registro Funcionario
     <br>
-        <form action="cadastro_funcionario.php" method="post" class="forms-funcionario">
+        <form action="validate_registro_funcionario.php" method="post" class="forms-funcionario">
             <label for="">Nome:</label>
-            <input type="text" name="nome-funcionario" required>
+            <input type="text" name="nome" required>
             <br>
             <label for="">login:</label>
-            <input type="text" name="login-funcionario" required>
+            <input type="text" name="login" required>
             <br>
             <label for="">Senha:</label>
-            <input type="password" name="senha-funcionario" required>
+            <input type="password" name="senha" required>
             <br>
             <label for="">Função:</label>
-            <input type="text" name="funcao-funcionario" required>
+            <input type="text" name="funcao" required>
 
             <input type="submit" name="enviar" value="cadastrar">
         </form>
