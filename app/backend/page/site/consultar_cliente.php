@@ -14,9 +14,6 @@ if((isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == tru
 
     $result = $connect->query($sql); 
 
-    print_r($result);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,9 +23,30 @@ if((isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == tru
     <title>Consultar Cliente</title>
 </head>
 <body>
-    <table>
+<style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <table class="table-bg">
         <thead>
             <tr>
+                <th scope="col">ID</th>
                 <th scope="col">NOME</th>
                 <th scope="col">EMAIL</th>
                 <th scope="col">TELEFONE</th>
@@ -45,6 +63,7 @@ if((isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == tru
     <?php 
     while($user_data = mysqli_fetch_assoc($result)){
         echo "<tr>";
+        echo "<td>" . $user_data['id_cliente'] . "</td>";
         echo "<td>" . $user_data['nome'] . "</td>";
         echo "<td>" . $user_data['email'] . "</td>";
         echo "<td>" . $user_data['telefone'] . "</td>";
@@ -52,9 +71,9 @@ if((isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == tru
         echo "<td>" . $user_data['dt_nascimento'] . "</td>";
         echo "<td>" . $user_data['morada'] . "</td>";
         echo "<td>" . $user_data['documento'] . "</td>";
-        echo "<td>" . "ações" . "</td>";
-        echo "</tr>";
+        echo "<td>" . "<a href='editar_cliente.php?nome=$user_data[id_cliente]'>" . "editar" . "</a>"; "</td>";
+        echo "</tr>"; 
     }
     ?>
-</body>
+</body> <a href=""></a>
 </html>

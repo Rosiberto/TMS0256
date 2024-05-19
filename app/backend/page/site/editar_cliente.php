@@ -1,3 +1,28 @@
+<?php 
+    if(!empty($_GET['id_cliente'])){
+
+        include_once('config.php');
+
+        $id = $_GET['id_cliente'];
+
+        $sql_select = "SELECT * FROM cliente WHERE id_cliente = $id";
+
+        $result = $connect->query($sql_select);
+
+        print_r("Login:");
+
+        $nome=$_POST['nome'];
+        $sobre_nome=$_POST['sobrenome'];
+        $email=$_POST['email'];
+        $telefone=$_POST['telefone']; 
+        $cpf=$_POST['cpf'];
+        $sexo=$_POST['sexo'];
+        $estado=$_POST['estado'];
+        $senha=$_POST['senha'];
+
+
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -136,7 +161,7 @@
         </div>     
     </nav>
 
-
+        <a href="consultar_cliente.php">Voltar</a>
     <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
       <form method="post" action="validate_registro_cliente.php">

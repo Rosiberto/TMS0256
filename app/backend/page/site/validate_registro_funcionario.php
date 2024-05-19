@@ -1,5 +1,6 @@
 <?php 
     include_once("conexao.php");
+    include_once("crm_funcionario.php");
  
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){

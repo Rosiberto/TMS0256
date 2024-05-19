@@ -1,6 +1,6 @@
 <?php 
     include_once("conexao.php");
-    include_once "cadastro_cliente.php";
+    include_once ("cadastro_cliente.php");
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nome=$_POST['nome'];
@@ -15,14 +15,14 @@
 
         $nome_final ='$nome ' . '$sobre_nome';
 
-        $dupesql = "SELECT * FROM cliente where (email = '$email')";
+        $dupesql = "SELECT * FROM cliente where (email = '$email') OR (documento = '$cpf')'";
 
         $duperaw = mysqli_query($connect, $dupesql);
 
 
     if(mysqli_num_rows($duperaw) > 0){
 
-     echo "seu email já foi registrado";
+     echo "O seu usuário já está cadastrado";
 
      }else{
 
