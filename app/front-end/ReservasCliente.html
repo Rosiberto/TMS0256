@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Hotelaria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-
-      .custom-btn {
-        min-width: 200px; 
-        height: 200px; 
-        border-radius: 15px; 
-        background-color: #8DBAC8; 
-        font-weight: bold; 
-        font-size: 25px; 
-      }
-
-      .center-vertical {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 90vh;
-      }
-    </style>
 </head>
   <body>
     <!-- Barra de Navegação (Header)-->
@@ -42,30 +24,36 @@
         </ul>
       </div>
     </nav>
+    <div class="mt-3"> 
+        <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Protocolo</th>
+                    <th scope="col">Identificação do Quarto</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Informações da Reserva</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Lago dos Descansos</td>
+                    <td>16/07/2022</td>
+                    <td><a style="cursor: pointer; color: blue;">Link</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Hotel Estácio</td>
+                    <td>10/01/2023</td>
+                    <td><a style="cursor: pointer; color: blue;">Link</a></td>
+                </tr>
+                </tbody>
+        </table>
 
-    <!-- Botões no meio da tela -->
-    <div class="center-vertical" style="margin-top: -50px;"> 
-      <div class="d-flex justify-content-center mt-3">
-        <a href="ReservasCliente.html">
-          <button type="button" class="btn btn-light btn-lg me-2 custom-btn">
-          <span class="text-dark">Reservas</span>
-          </button>
-        </a>
-        
-        <a href="FinanceiroCliente.html">
-          <button type="button" class="btn btn-light btn-lg me-2 custom-btn">
-          <span class="text-dark">Financeiro</span>
-          </button>
-        </a>
-        
-        <a href="PerfilCliente.html">
-          <button type="button" class="btn btn-light btn-lg custom-btn">
-            <span class="text-dark">Perfil</span>
-          </button>
-        </a>
-      </div>
     </div>
+    
 
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
