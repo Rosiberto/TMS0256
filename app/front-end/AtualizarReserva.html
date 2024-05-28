@@ -96,7 +96,7 @@
             text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
             left: 50%;
             margin-right: -50%;
-
+            display: flex;   
         }
 
         /* Elemento de classe "botao" com o estado da pseudoclasse "hover" */
@@ -145,47 +145,60 @@
         </ul>
       </div>
     </nav>
-
     
-    <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
         <form>
+          <div class="campo">
+            <label for="IdReserva"><strong>Identificação da Reserva</strong></label>
+            <input type="text" name="IdReserva" id="IdReserva" placeholder="01" required>
+          </div>
+          <button class="botao" type="submit" onsubmit="">Procurar Reserva</button>
           <fieldset class="grupo">
-              <!-- Campo do Nome -->
+          <div class="campo">
+            <label for="IdCliente"><strong>Matricula do Cliente</strong></label>
+            <input type="text" name="IdCliente" id="IdCliente" placeholder="01" required disabled>
+          </div>
+          <div class="campo">
+            <label for="Dt_Entrada"><strong>Responsável pela Reserva</strong></label>
+            <input type="text" name="Dt_Entrada" id="Dt_Entrada" placeholder="João" required disabled>
+          </div>
+          </fieldset>
+          <fieldset class="grupo">
+              <!-- Campo da atualização do Serviço -->
+                            
               <div class="campo">
-                  <label for="nomeEmpresa"><strong>Nome</strong></label>
-                  <input type="text" name="nomeEmpresa" id="nomeEmpresa" placeholder="Nome da empresa" required>
+                  <label for="Dt_Entrada"><strong>Data de Entrada</strong></label>
+                  <input type="text" name="Dt_Entrada" id="Dt_Entrada" placeholder="16/05/2024" required>
               </div>
               <div class="campo">
-                <label for="nomeCategoria"><strong>Categoria</strong></label>
-                <input type="text" name="nomeCategoria" id="nomeCategoria" placeholder="Categoria" required>
+                <label for="Dt_Saida"><strong>Data de Entrada</strong></label>
+                <input type="text" name="Dt_Saida" id="Dt_Saida" placeholder="25/05/2024" required>
             </div>
           </fieldset>   
   
           <fieldset class="grupo">
-          <!-- Campo de email -->
           <div class="campo">
-              <label for="email"><strong>Email</strong></label>
-              <input type="email" name="email" id="email" placeholder="email@exemplo.com" required>
+              <label for="Qtd_Pessoa"><strong>Quantidade de Pessoas</strong></label>
+              <input type="text" name="Qtd_Pessoa" id="Qtd_Pessoa" placeholder="3" required>
           </div>
+          </fieldset>
+
+          <fieldset class="grupo">
+            <div class="campo">
+                <label for="Servico_Solicitado"><strong>Servico Solicitado</strong></label>
+                <input type="text" name="Servico_Solicitado" id="Servico_Solicitado" placeholder="Turismo Rural" required>
+            </div>
+            </fieldset>
   
-  
-          <!-- Campo de telefone -->
           <div class="campo">
-              <label for="telefone"><strong>Telefone</strong></label>
-              <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
+          <!-- Botão para conclusão do cadastro -->          
+          <button class="botao" type="submit" onsubmit="">Atualizar</button>
+          <button class="botao" type="submit" onsubmit="">Cancelar Reserva</button>
+          
+        
           </div>
-      </fieldset>
-  
-      <fieldset class="grupo">
-              <!-- Campo de Endereço -->
-          <div class="campo">
-              <label for="endereco"><strong>Endereço</strong></label>
-              <input type="cpf" name="endereco" id="endereco" placeholder="Informe o Endereço" required>
-          </div>
-      </fieldset>  
-          <!-- Botão para conclusão do cadastro -->
-          <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
+          
+                      
       </form>
       </div>
 
