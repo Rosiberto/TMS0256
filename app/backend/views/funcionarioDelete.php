@@ -1,0 +1,1 @@
+<h1>Funcionario deletado!</h1>

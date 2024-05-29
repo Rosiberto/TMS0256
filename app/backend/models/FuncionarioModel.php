@@ -1,7 +1,7 @@
 <?php
 include_once("Database.php");
 
-class ClientModel extends Database{
+class FuncionarioModel extends Database {
     
     private $pdo;
 
@@ -9,22 +9,24 @@ class ClientModel extends Database{
         $this->pdo = $this->getConnection();
     }
 
-    public function  fetch() {
-        $stm = $this->pdo->query("SELECT * FROM clientes");
+    public function fetch() {
+        $stm = $this->pdo->query("SELECT * FROM empregado");
         if($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
             return [];
         }
     }
+
     public function fetchById($id) {
-        $stm = $this->pdo->prepare("SELECT * FROM clientes WHERE id = ?");
+        $stm = $this->pdo->prepare("SELECT * FROM empregado WHERE id_empregado = ?");
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
+
     public function create($name, $email) {
         try {
-            $stm = $this->pdo->prepare("INSERT INTO clientes (nome, email) VALUES (?, ?)");
+            $stm = $this->pdo->prepare("INSERT INTO empregado (nome, email) VALUES (?, ?)");
             $stm->execute([$name, $email]);
       
             if ($this->pdo->lastInsertId() > 0) {
@@ -37,25 +39,26 @@ class ClientModel extends Database{
             return false;
         }
     }
-  
+
     public function update($name, $email, $id) {
-      try {
-        $stm = $this->pdo->prepare("UPDATE clientes SET nome = ?, email = ? WHERE id = ?");
-        $stm->execute([$name, $email, $id]);
-        return true;
-      } catch (PDOException $e) {
-        return false;
-      }
+        try {
+            $stm = $this->pdo->prepare("UPDATE empregado SET nome = ?, email = ? WHERE id_empregado = ?");
+            $stm->execute([$name, $email, $id]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function delete($id) {
-      try {
-        $stm = $this->pdo->prepare("DELETE FROM clientes WHERE id = ?");
-        $stm->execute([$id]);
-        return true;
-      } catch (PDOException $e) {
-        return false;
-      }      
+        try {
+            $stm = $this->pdo->prepare("DELETE FROM empregado WHERE id_empregado = ?");
+            $stm->execute([$id]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }      
     }
-
 }
+
+?>
