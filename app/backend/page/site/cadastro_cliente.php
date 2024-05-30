@@ -181,7 +181,7 @@
         <!--Combo-Box para escolha de sexo-->
         <div class="campo">
             <label><strong>Sexo</strong></label>
-            <select id="sexo" name="sexo" required>
+            <select id="sexo" name="sexo">
               <option value="m">Masculino</option>
               <option value="f">Feminino</option>
               <option value="o">Outro</option>
@@ -195,7 +195,7 @@
                <!-- Combo-Box de Estado -->
                <div class="campo">
               <label><strong>Estado</strong></label>
-              <select id="estado" name="estado" required>
+              <select id="estado" name="estado">
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
                 <option value="AP">Amapá</option>

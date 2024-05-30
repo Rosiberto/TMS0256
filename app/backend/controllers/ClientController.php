@@ -19,13 +19,45 @@ class ClientController extends RenderView {
     }
 
     public function create() {
-        $name = "Lucas";
-        $email = "lucas123@gmail.com";
+        $name = "joaozinho";
+        $email = "joaozinho@gmail.com";
+    
+        $result = $this->client->create($name, $email);
+
+
         
-        if ($this->client->create($name, $email)) {
-           echo "Produto criado com sucesso!";
+        if ($result === true) {
+            echo "Cliente criado com sucesso!";
         } else {
-           echo "Desculpa, algo deu errado, tente mais tarde!";
+            echo "Desculpa, algo deu errado: " . $result;
         }
     }
+
+    public function update($id) {
+        $id_client = $id[0];
+
+        $name = "editado";
+        $email = "editado@gmail.com";
+    
+        $result = $this->client->update($name, $email, $id_client);
+        
+        if ($result === true) {
+            echo "Cliente editado com sucesso!";
+        } else {
+            echo "Desculpa, algo deu errado: " . $result;
+        }
+    }
+
+    public function delete($id) {
+        $id_client = $id[0];
+    
+        $result = $this->client->delete($id_client);
+        
+        if ($result === true) {
+            echo "Cliente deletado com sucesso!";
+        } else {
+            echo "Desculpa, algo deu errado: " . $result;
+        }        
+    }
+    
 }

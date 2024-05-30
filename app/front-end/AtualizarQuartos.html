@@ -145,47 +145,28 @@
         </ul>
       </div>
     </nav>
-
     
-    <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
         <form>
+          <div class="campo">
+            <label for="IdQuarto"><strong>Identificação do Quarto</strong></label>
+            <input type="text" name="IdQuarto" id="IdQuarto" placeholder="01" required>
+          </div>
+          <button class="botao" type="submit" onsubmit="">Procurar Serviço</button> 
           <fieldset class="grupo">
-              <!-- Campo do Nome -->
+              <!-- Campo da atualização do Serviço -->
+              
               <div class="campo">
-                  <label for="nomeEmpresa"><strong>Nome</strong></label>
-                  <input type="text" name="nomeEmpresa" id="nomeEmpresa" placeholder="Nome da empresa" required>
+                  <label for="Numero"><strong>Numero</strong></label>
+                  <input type="text" name="Numero" id="Numero" placeholder="301" required>
               </div>
               <div class="campo">
-                <label for="nomeCategoria"><strong>Categoria</strong></label>
-                <input type="text" name="nomeCategoria" id="nomeCategoria" placeholder="Categoria" required>
+                <label for="Capadidade_Pessoas"><strong>Capadidade de Pessoas</strong></label>
+                <input type="text" name="Capadidade_Pessoas" id="Capadidade_Pessoas" placeholder="4" required>
             </div>
-          </fieldset>   
-  
-          <fieldset class="grupo">
-          <!-- Campo de email -->
-          <div class="campo">
-              <label for="email"><strong>Email</strong></label>
-              <input type="email" name="email" id="email" placeholder="email@exemplo.com" required>
-          </div>
-  
-  
-          <!-- Campo de telefone -->
-          <div class="campo">
-              <label for="telefone"><strong>Telefone</strong></label>
-              <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
-          </div>
-      </fieldset>
-  
-      <fieldset class="grupo">
-              <!-- Campo de Endereço -->
-          <div class="campo">
-              <label for="endereco"><strong>Endereço</strong></label>
-              <input type="cpf" name="endereco" id="endereco" placeholder="Informe o Endereço" required>
-          </div>
-      </fieldset>  
+          </fieldset> 
           <!-- Botão para conclusão do cadastro -->
-          <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
+          <button class="botao" type="submit" onsubmit="">Atualizar</button>            
       </form>
       </div>
 

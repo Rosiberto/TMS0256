@@ -145,50 +145,35 @@
         </ul>
       </div>
     </nav>
-
     
-    <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
         <form>
+          <div class="campo">
+            <label for="Quarto_Desejado"><strong>Quarto Desejado</strong></label>
+            <input type="text" name="Quarto_Desejado<" id="Quarto_Desejado<" placeholder="301" required>
+          </div>
+          <button class="botao" type="submit" onsubmit="">Procurar Quarto</button> 
           <fieldset class="grupo">
-              <!-- Campo do Nome -->
+              <!-- Campo da atualização do Serviço -->
               <div class="campo">
-                  <label for="nomeEmpresa"><strong>Nome</strong></label>
-                  <input type="text" name="nomeEmpresa" id="nomeEmpresa" placeholder="Nome da empresa" required>
-              </div>
-              <div class="campo">
-                <label for="nomeCategoria"><strong>Categoria</strong></label>
-                <input type="text" name="nomeCategoria" id="nomeCategoria" placeholder="Categoria" required>
-            </div>
-          </fieldset>   
-  
+                <label for="Quantidade_Pessoas"><strong>Quantidade de Pessoas</strong></label>
+                <input type="text" name="Quantidade_Pessoas" id="Quantidade_Pessoas" placeholder="5" required>
+                <label for="Dt_Entrada"><strong>Data de Entrada</strong></label>
+                <input type="text" name="Dt_Entrada" id="Dt_Entrada" placeholder="25/05/2024" required>
+                <label for="Dt_Saída"><strong>Data de Saída</strong></label>
+                <input type="text" name="Dt_Saida" id="Dt_Saida" placeholder="30/05/2024" required>
+              </div>              
+          </fieldset> 
           <fieldset class="grupo">
-          <!-- Campo de email -->
           <div class="campo">
-              <label for="email"><strong>Email</strong></label>
-              <input type="email" name="email" id="email" placeholder="email@exemplo.com" required>
+              <label for="Servico_Solicitado"><strong>Serviço Solicitado</strong></label>
+              <input type="text" name="Servico_Solicitado" id="Servico_Solicitado" placeholder="Turismo Rural" required>
           </div>
-  
-  
-          <!-- Campo de telefone -->
-          <div class="campo">
-              <label for="telefone"><strong>Telefone</strong></label>
-              <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
-          </div>
-      </fieldset>
-  
-      <fieldset class="grupo">
-              <!-- Campo de Endereço -->
-          <div class="campo">
-              <label for="endereco"><strong>Endereço</strong></label>
-              <input type="cpf" name="endereco" id="endereco" placeholder="Informe o Endereço" required>
-          </div>
-      </fieldset>  
+          </fieldset>
           <!-- Botão para conclusão do cadastro -->
-          <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
-      </form>
-      </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+          <button class="botao" type="submit" onsubmit="">Efetuar Reserva</button>            
+        </form>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

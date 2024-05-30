@@ -130,8 +130,8 @@ fieldset.grupo .campo {
           Olá, Cliente!
         </span>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item fs-4" href="#">Minha conta</a></li>
-          <li><a class="dropdown-item fs-4" href="#">Sair</a></li> 
+          <li><a class="dropdown-item fs-4" href="LoginCliente.html">Minha conta</a></li>
+          <li><a class="dropdown-item fs-4" onclick="">Sair</a></li> 
         </ul>
       </div>
     </nav>
@@ -167,68 +167,67 @@ fieldset.grupo .campo {
               <label for="telefone"><strong>Telefone</strong></label>
               <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
           </div>
-      </fieldset>
+            </fieldset>
   
-      <fieldset class="grupo">
+            <fieldset class="grupo">
               <!-- Campo de CPF -->
-          <div class="campo">
+            <div class="campo">
               <label for="CPF"><strong>CPF</strong></label>
               <input type="cpf" name="cpf" id="cpf" placeholder="Informe o CPF" required>
-          </div>
+            </div> 
   
-  
-          <!--Combo-Box para escolha de sexo-->
-          <div class="campo">
-              <label><strong>Sexo</strong></label>
-              <select id="sexo" name="sexo">
-                <option value="m">Masculino</option>
-                <option value="f">Feminino</option>
-                <option value="o">Outro</option>
-              </select>
-          </div>  
-      </fieldset>
+            <!--Combo-Box para escolha de sexo-->
+            <div class="campo">
+                <label><strong>Sexo</strong></label>
+                <select id="sexo" name="sexo">
+                    <option value="m">Masculino</option>
+                    <option value="f">Feminino</option>
+                    <option value="o">Outro</option>
+                </select>
+            </div>  
+            </fieldset>
 
-      <fieldset class="grupo">
+            <fieldset class="grupo">
 
-        <!-- Combo-Box de Estado -->
-        <div class="campo">
-       <label><strong>Estado</strong></label>
-       <select id="estado" name="estado">
-         <option value="AC">Acre</option>
-         <option value="AL">Alagoas</option>
-         <option value="AP">Amapá</option>
-         <option value="AM">Amazonas</option>
-         <option value="BA">Bahia</option>
-         <option value="CE">Ceará</option>
-         <option value="DF">Distrito Federal</option>
-         <option value="ES">Espírito Santo</option>
-         <option value="GO">Goiás</option>
-         <option value="MA">Maranhão</option>
-         <option value="MT">Mato Grosso</option>
-         <option value="MS">Mato Grosso do Sul</option>
-         <option value="MG">Minas Gerais</option>
-         <option value="PA">Pará</option>
-         <option value="PB">Paraíba</option>
-         <option value="PR">Paraná</option>
-         <option value="PE">Pernambuco</option>
-         <option value="PI">Piauí</option>
-         <option value="RJ">Rio de Janeiro</option>
-         <option value="RN">Rio Grande do Norte</option>
-         <option value="RS">Rio Grande do Sul</option>
-         <option value="RO">Rondônia</option>
-         <option value="RR">Roraima</option>
-         <option value="SC">Santa Catarina</option>
-         <option value="SP">São Paulo</option>
-         <option value="SE">Sergipe</option>
-         <option value="TO">Tocantins</option>
-         <option value="EX">Estrangeiro</option>
-     </select>
-     </div>
-   </fieldset>   
- <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
- <button class="botao" type="submit" onsubmit="">Salvar</button>            
-</form>
-</div>
+            <!-- Combo-Box de Estado -->
+            <div class="campo">
+            <label><strong>Estado</strong></label>
+            <select id="estado" name="estado">
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+                <option value="EX">Estrangeiro</option>
+            </select>
+            </div>
+        </fieldset>   
+        <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
+        <button class="botao" type="submit" onsubmit="">Salvar</button>            
+        </form>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
