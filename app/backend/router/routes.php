@@ -24,7 +24,13 @@ $routes = [
     '/empresa/{id}' => 'EmpresaController@show',
     '/empresa/novo' => 'EmpresaController@create',
     '/empresa/editar/{id}' => 'EmpresaController@update',
-    '/empresa/deletar/{id}' => 'EmpresaController@delete'
-];
+    '/empresa/deletar/{id}' => 'EmpresaController@delete',
 
-?>
+    // Rotas para reservas
+    '/reserva' => 'ReservaController@index',
+    '/reserva/{id}' => 'ReservaController@show',
+    '/reserva/novo' => 'ReservaController@create',
+    '/reserva/editar/{id}' => 'ReservaController@update',
+    '/reserva/deletar/{id}' => 'ReservaController@delete'
+
+];

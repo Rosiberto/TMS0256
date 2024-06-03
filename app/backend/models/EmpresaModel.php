@@ -1,6 +1,4 @@
 <?php
-include_once("Database.php");
-
 class EmpresaModel extends Database {
     
     private $pdo;
@@ -19,15 +17,15 @@ class EmpresaModel extends Database {
     }
 
     public function fetchById($id) {
-        $stm = $this->pdo->prepare("SELECT * FROM empresa WHERE id_empresa = ?");
+        $stm = $this->pdo->prepare("SELECT * FROM empresa WHERE id = ?");
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create($name, $email) {
+    public function create( $name, $email, $telefone, $endereco, $nomeCategoria ) {
         try {
-            $stm = $this->pdo->prepare("INSERT INTO empresa (nome, email) VALUES (?, ?)");
-            $stm->execute([$name, $email]);
+            $stm = $this->pdo->prepare("INSERT INTO cliente (Nome, Email, Telefone, Endereço, Categoria) VALUES (?, ?, ?, ?, ?)");
+            $stm->execute([ $name, $email, $telefone, $endereco, $nomeCategoria ]);
       
             if ($this->pdo->lastInsertId() > 0) {
                 return true;
@@ -40,19 +38,20 @@ class EmpresaModel extends Database {
         }
     }
 
-    public function update($name, $email, $id) {
+    public function update($id, $name, $email, $telefone, $endereco, $nomeCategoria) {
         try {
-            $stm = $this->pdo->prepare("UPDATE empresa SET nome = ?, email = ? WHERE id_empresa = ?");
-            $stm->execute([$name, $email, $id]);
+            $stm = $this->pdo->prepare("UPDATE empresa SET Nome = ?, Email = ?, Telefone = ?, Endereco = ?, NomeCategoria = ? WHERE id = ?");
+            $stm->execute([$name, $email, $telefone, $endereco, $nomeCategoria, $id]);
             return true;
         } catch (PDOException $e) {
+            error_log('Database error: ' . $e->getMessage());
             return false;
         }
     }
 
     public function delete($id) {
         try {
-            $stm = $this->pdo->prepare("DELETE FROM empresa WHERE id_empresa = ?");
+            $stm = $this->pdo->prepare("DELETE FROM empresa WHERE id = ?");
             $stm->execute([$id]);
             return true;
         } catch (PDOException $e) {
@@ -61,5 +60,3 @@ class EmpresaModel extends Database {
     }
 
 }
-
-?>

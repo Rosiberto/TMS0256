@@ -24,7 +24,7 @@ class FuncionarioModel extends Database {
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create($name, $email) {
+    public function create($name, $email, ) {
         try {
             $stm = $this->pdo->prepare("INSERT INTO empregado (nome, email) VALUES (?, ?)");
             $stm->execute([$name, $email]);

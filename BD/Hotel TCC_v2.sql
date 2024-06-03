@@ -2,6 +2,7 @@
 CREATE DATABASE IF NOT EXISTS `hotel` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `hotel`;
 
+
 -- Copiando estrutura para tabela hotel.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,

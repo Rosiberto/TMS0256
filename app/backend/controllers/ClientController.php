@@ -19,28 +19,53 @@ class ClientController extends RenderView {
     }
 
     public function create() {
-        $name = "joaozinho";
-        $email = "joaozinho@gmail.com";
-    
-        $result = $this->client->create($name, $email);
-
-
+        $requiredFields = ['nome', 'email', 'telefone', 'morada', 'cpf', 'nacionalidade', 'dataNascimento'];
         
-        if ($result === true) {
+        foreach ($requiredFields as $field) {
+            if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                echo "Preencha o campo " . ucfirst($field) . "!";
+                return;
+            }
+        }
+    
+        $name = $_POST['nome'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $morada = $_POST['morada'];
+        $documento = $_POST['cpf'];
+        $nacionalidade = $_POST['nacionalidade'];
+        $dataNascimento = $_POST['dataNascimento'];
+
+    
+        if ($this->client->create($name, $email, $telefone,$morada, $documento, $nacionalidade, $dataNascimento)) {
             echo "Cliente criado com sucesso!";
         } else {
-            echo "Desculpa, algo deu errado: " . $result;
+            echo "Desculpe, algo deu errado, tente mais tarde!";
         }
     }
 
     public function update($id) {
         $id_client = $id[0];
 
-        $name = "editado";
-        $email = "editado@gmail.com";
-    
-        $result = $this->client->update($name, $email, $id_client);
+        $requiredFields = ['nome', 'email', 'telefone', 'morada', 'documento', 'nacionalidade', 'dataNascimento'];
         
+        foreach ($requiredFields as $field) {
+            if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                echo "Preencha o campo " . ucfirst($field) . "!";
+                return;
+            }
+        }
+
+        $name = $_POST['nome'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $morada = $_POST['morada'];
+        $documento = $_POST['documento'];
+        $nacionalidade = $_POST['nacionalidade'];
+        $dataNascimento = $_POST['dataNascimento'];
+
+        $result = $this->client->update($id_client, $name, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento);
+
         if ($result === true) {
             echo "Cliente editado com sucesso!";
         } else {

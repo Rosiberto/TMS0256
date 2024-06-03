@@ -19,30 +19,52 @@ class EmpresaController extends RenderView {
     }
 
     public function create() {
-        $name = "Empresa XYZ";
-        $email = "contato@empresaxyz.com.br";
-    
-        $result = $this->Empresa->create($name, $email);
+        $requiredFields = ['nomeEmpresa', 'email', 'telefone', 'endereco', 'nomeCategoria'];
         
-        if ($result === true) {
-            echo "Empresa criada com sucesso!";
+        foreach ($requiredFields as $field) {
+            if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                echo "Preencha o campo " . ucfirst($field) . "!";
+                return;
+            }
+        }
+    
+        $name = $_POST['nomeEmpresa'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $endereco = $_POST['endereco'];
+        $nomeCategoria = $_POST['nomeCategoria'];
+
+    
+        if ($this->client->create($name, $email, $telefone, $endereco, $nomeCategoria)) {
+            echo "Cliente criado com sucesso!";
         } else {
-            echo "Desculpa, algo deu errado: " . $result;
+            echo "Desculpe, algo deu errado, tente mais tarde!";
         }
     }
-
     public function update($id) {
         $id_Empresa = $id[0];
 
-        $name = "Empresa Editada";
-        $email = "editado@empresa.com.br";
-    
-        $result = $this->Empresa->update($name, $email, $id_Empresa);
+        $requiredFields = ['nomeEmpresa', 'email', 'telefone', 'endereco', 'nomeCategoria'];
         
+        foreach ($requiredFields as $field) {
+            if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                echo "Preencha o campo " . ucfirst($field) . "!";
+                return;
+            }
+        }
+
+        $name = $_POST['nomeEmpresa'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $endereco = $_POST['endereco'];
+        $nomeCategoria = $_POST['nomeCategoria'];
+
+        $result = $this->company->update($id_Empresa, $name, $email, $telefone, $endereco, $nomeCategoria);
+
         if ($result === true) {
-            echo "Empresa editada com sucesso!";
+            echo "Empresa atualizada com sucesso!";
         } else {
-            echo "Desculpa, algo deu errado: " . $result;
+            echo "Desculpe, algo deu errado: " . $result;
         }
     }
 
@@ -58,5 +80,3 @@ class EmpresaController extends RenderView {
         }        
     }
 }
-
-?>
