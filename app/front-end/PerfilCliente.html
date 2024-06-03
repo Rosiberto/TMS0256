@@ -141,16 +141,16 @@ fieldset.grupo .campo {
         <form>
           <fieldset class="grupo">
               <!-- Campo do nome -->
-              <div class="campo">
-                  <label for="nome"><strong>Nome</strong></label>
-                  <input type="text" name="nome" id="nome" placeholder="Nome" required>
-              </div>
-  
-              <!-- Campo do sobrenome -->
-              <div class="campo">
-                  <label for="sobrenome"><strong>Sobrenome</strong></label>
-                  <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>
-              </div>
+              <div class="campo" >
+                <label for="nome"><strong>Nome Completo</strong></label>
+                <input type="text" name="nome" id="nome" placeholder="Nome" required style="width: 400px;">
+            </div>
+
+            <!-- Campo do sobrenome 
+            <div class="campo">
+                <label for="sobrenome"><strong>Sobrenome</strong></label>
+                <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>
+            </div>-->
           </fieldset> 
   
   
@@ -188,41 +188,46 @@ fieldset.grupo .campo {
             </fieldset>
 
             <fieldset class="grupo">
-
+                <div class="campo">
+                    <label for="morada"><strong>Morada</strong></label>
+                    <input type="morada" name="morada" id="morada" placeholder="Informe sua Morada" required>
+                </div>
             <!-- Combo-Box de Estado -->
-            <div class="campo">
-            <label><strong>Estado</strong></label>
-            <select id="estado" name="estado">
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-                <option value="EX">Estrangeiro</option>
-            </select>
-            </div>
+                <div class="campo">
+                    <label><strong>Nacionalidade</strong></label>
+                    <select id="nacionalidade" name="nacionalidade">
+                        <option value="-">-</option>
+                        <option value="br">brasileiro</option>
+                        <!--<option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="EX">Estrangeiro</option>-->
+                    </select>
+                </div>
         </fieldset>   
         <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
         <button class="botao" type="submit" onsubmit="">Salvar</button>            
