@@ -10,7 +10,7 @@ class ReservaModel extends Database{
     }
 
     public function  fetch() {
-        $stm = $this->pdo->query("SELECT * FROM reserva");
+        $stm = $this->pdo->query("SELECT * FROM reservas");
         if($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
@@ -18,13 +18,13 @@ class ReservaModel extends Database{
         }
     }
     public function fetchById($id) {
-        $stm = $this->pdo->prepare("SELECT * FROM reserva WHERE id = ?");
+        $stm = $this->pdo->prepare("SELECT * FROM reservas WHERE id = ?");
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
     public function create($name, $email) {
         try {
-            $stm = $this->pdo->prepare("INSERT INTO reserva (nome, email) VALUES (?, ?)");
+            $stm = $this->pdo->prepare("INSERT INTO reservas (nome, email) VALUES (?, ?)");
             $stm->execute([$name, $email]);
       
             if ($this->pdo->lastInsertId() > 0) {
@@ -40,7 +40,7 @@ class ReservaModel extends Database{
   
     public function update($name, $email, $id) {
       try {
-        $stm = $this->pdo->prepare("UPDATE reserva SET nome = ?, email = ? WHERE id = ?");
+        $stm = $this->pdo->prepare("UPDATE reservas SET nome = ?, email = ? WHERE id = ?");
         $stm->execute([$name, $email, $id]);
         return true;
       } catch (PDOException $e) {
@@ -50,7 +50,7 @@ class ReservaModel extends Database{
 
     public function delete($id) {
       try {
-        $stm = $this->pdo->prepare("DELETE FROM reserva WHERE id = ?");
+        $stm = $this->pdo->prepare("DELETE FROM reservas WHERE id = ?");
         $stm->execute([$id]);
         return true;
       } catch (PDOException $e) {

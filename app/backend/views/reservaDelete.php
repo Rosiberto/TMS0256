@@ -1,1 +1,0 @@
-<h1>Cliente deletado!</h1>

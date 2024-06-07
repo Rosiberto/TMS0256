@@ -1,43 +1,63 @@
 <?php
 
 class FuncionarioController extends RenderView {
-    private $funcionario;
+    private $Funcionario;
 
     public function __construct() {
-        $this->funcionario = new FuncionarioModel();
+        $this->Funcionario = new FuncionarioModel();
     }
 
     public function index() {
-        $funcionarios = $this->funcionario->fetch();
+        $funcionarios = $this->Funcionario->fetch();
         $this->loadView("Funcionario", ['funcionarios' => $funcionarios]);
     }
 
     public function show($id) {
-        $id_empregado = $id[0];
-        $funcionario = $this->funcionario->fetchById($id_empregado);
+        $id_funcionario = $id[0];
+        $funcionario = $this->Funcionario->fetchById($id_funcionario);
         $this->loadView('FuncionarioShow', ['funcionario' => $funcionario]);
     }
 
     public function create() {
-        $name = "joaozinho";
-        $email = "joaozinho@gmail.com";
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $requiredFields = ['nomeUsuario', 'senha', 'nome', 'fkEmpresa', 'fkFuncaoEmpregado'];
     
-        $result = $this->funcionario->create($name, $email);
-        
-        if ($result === true) {
-            echo "Funcionário criado com sucesso!";
-        } else {
-            echo "Desculpa, algo deu errado: " . $result;
+            foreach ($requiredFields as $field) {
+                if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                    echo "Preencha o campo " . ucfirst($field) . "!";
+                    return;
+                }
+            }
+
+            $empresas = $this->funcionario->getEmpresas();
+            $funcoesEmpregado = $this->funcionario->getFuncoesEmpregado();
+            $this->loadView("FormularioFuncionario", ['empresas' => $empresas, 'funcoesEmpregado' => $funcoesEmpregado]);
         }
+
+            $nomeUsuario = $_POST['nomeUsuario'];
+            $senha = $_POST['senha'];
+            $nome = $_POST['nome'];
+            $fkEmpresa = $_POST['fkEmpresa'];
+            $fkFuncaoEmpregado = $_POST['fkFuncaoEmpregado'];
+          
+            $result = $this->funcionario->create($nomeUsuario, $senha, $nome, $fkEmpresa, $fkFuncaoEmpregado);
+            
+            if ($result === true) {
+                echo "Funcionário criado com sucesso!";
+            } else {
+                echo "Desculpa, algo deu errado.";
+            }
+        } 
     }
 
-    public function update($id) {
-        $id_empregado = $id[0];
 
-        $name = "editado";
-        $email = "editado@gmail.com";
-    
-        $result = $this->funcionario->update($name, $email, $id_empregado);
+
+    public function update($id) {
+        $id_funcionario = $id[0];
+
+        $nome = "Funcionário Editado";
+
+        $result = $this->Funcionario->update($nome, $id_funcionario);
         
         if ($result === true) {
             echo "Funcionário editado com sucesso!";
@@ -47,9 +67,9 @@ class FuncionarioController extends RenderView {
     }
 
     public function delete($id) {
-        $id_empregado = $id[0];
+        $id_funcionario = $id[0];
     
-        $result = $this->funcionario->delete($id_empregado);
+        $result = $this->Funcionario->delete($id_funcionario);
         
         if ($result === true) {
             echo "Funcionário deletado com sucesso!";
@@ -57,6 +77,10 @@ class FuncionarioController extends RenderView {
             echo "Desculpa, algo deu errado: " . $result;
         }        
     }
-}
 
-?>
+    private function showCreateForm() {
+        $empresas = $this->FuncionarioModel->getEmpresas();
+    }
+
+
+}

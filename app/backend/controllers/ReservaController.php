@@ -8,8 +8,8 @@ class ReservaController extends RenderView {
     }
 
     public function index() {
-        $reserva = $this->reserva->fetch();
-        $this->loadView("reserva", ['reserva' => $reserva]);
+        $reservas = $this->reserva->fetch();
+        $this->loadView("reservas", ['reservas' => $reservas]);
     }
 
     public function show($id) {

@@ -22,11 +22,11 @@ class EmpresaModel extends Database {
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create( $name, $email, $telefone, $endereco, $nomeCategoria ) {
+    public function create($name, $endereco, $telefone, $categoria, $email) {
         try {
-            $stm = $this->pdo->prepare("INSERT INTO cliente (Nome, Email, Telefone, Endereço, Categoria) VALUES (?, ?, ?, ?, ?)");
-            $stm->execute([ $name, $email, $telefone, $endereco, $nomeCategoria ]);
-      
+            $sql = "INSERT INTO empresa (Nome, endereço, telefone, categoria, email) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute([$name, $endereco, $telefone, $categoria, $email]);
             if ($this->pdo->lastInsertId() > 0) {
                 return true;
             } else {
@@ -38,20 +38,19 @@ class EmpresaModel extends Database {
         }
     }
 
-    public function update($id, $name, $email, $telefone, $endereco, $nomeCategoria) {
+    public function update($name, $email, $id) {
         try {
-            $stm = $this->pdo->prepare("UPDATE empresa SET Nome = ?, Email = ?, Telefone = ?, Endereco = ?, NomeCategoria = ? WHERE id = ?");
-            $stm->execute([$name, $email, $telefone, $endereco, $nomeCategoria, $id]);
+            $stm = $this->pdo->prepare("UPDATE empresa SET nome = ?, email = ? WHERE id_empresa = ?");
+            $stm->execute([$name, $email, $id]);
             return true;
         } catch (PDOException $e) {
-            error_log('Database error: ' . $e->getMessage());
             return false;
         }
     }
 
     public function delete($id) {
         try {
-            $stm = $this->pdo->prepare("DELETE FROM empresa WHERE id = ?");
+            $stm = $this->pdo->prepare("DELETE FROM empresa WHERE id_empresa = ?");
             $stm->execute([$id]);
             return true;
         } catch (PDOException $e) {

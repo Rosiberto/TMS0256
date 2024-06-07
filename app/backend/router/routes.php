@@ -8,6 +8,7 @@ $routes = [
     '/cliente/novo' => 'ClientController@create',
     '/cliente/editar/{id}' => 'ClientController@update',
     '/cliente/deletar/{id}' => 'ClientController@delete',
+    '/cliente/perfil/financeiro' => 'ClientController@validate',
 
          
 
@@ -31,6 +32,12 @@ $routes = [
     '/reserva/{id}' => 'ReservaController@show',
     '/reserva/novo' => 'ReservaController@create',
     '/reserva/editar/{id}' => 'ReservaController@update',
-    '/reserva/deletar/{id}' => 'ReservaController@delete'
+    '/reserva/deletar/{id}' => 'ReservaController@delete',
+
+    // '/reserva' => 'ReservaController@index',
+    // '/reserva/{id}' => 'ReservaController@show',
+    // '/reserva/novo' => 'ReservaController@create',
+    // '/reserva/editar/{id}' => 'ReservaController@update',
+    // '/reserva/deletar/{id}' => 'ReservaController@delete'
 
 ];

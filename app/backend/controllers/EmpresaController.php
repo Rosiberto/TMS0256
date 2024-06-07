@@ -8,8 +8,8 @@ class EmpresaController extends RenderView {
     }
 
     public function index() {
-        $companies = $this->Empresa->fetch();
-        $this->loadView("Empresa", ['empresas' => $companies]);
+        $empresas = $this->Empresa->fetch();
+        $this->loadView("Empresa", ['empresas' => $empresas]);
     }
 
     public function show($id) {
@@ -19,52 +19,39 @@ class EmpresaController extends RenderView {
     }
 
     public function create() {
-        $requiredFields = ['nomeEmpresa', 'email', 'telefone', 'endereco', 'nomeCategoria'];
-        
-        foreach ($requiredFields as $field) {
-            if (!isset($_POST[$field]) || empty($_POST[$field])) {
-                echo "Preencha o campo " . ucfirst($field) . "!";
-                return;
-            }
-        }
-    
-        $name = $_POST['nomeEmpresa'];
-        $email = $_POST['email'];
-        $telefone = $_POST['telefone'];
-        $endereco = $_POST['endereco'];
-        $nomeCategoria = $_POST['nomeCategoria'];
 
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            
+
+        $name = $_POST['nomeEmpresa'];
+        $endereco =$_POST['endereco'];
+        $telefone =$_POST['telefone'];
+        $categoria =$_POST['nomeCategoria'];
+        $email =$_POST['email'];
+        
     
-        if ($this->client->create($name, $email, $telefone, $endereco, $nomeCategoria)) {
-            echo "Cliente criado com sucesso!";
+        $result = $this->Empresa->create($name, $endereco, $telefone, $categoria, $email);
+        
+        if ($result === true) {
+            echo "Empresa criada com sucesso!";
         } else {
-            echo "Desculpe, algo deu errado, tente mais tarde!";
+            echo "Desculpa, algo deu errado: " . $result;
         }
     }
+}
+
     public function update($id) {
         $id_Empresa = $id[0];
 
-        $requiredFields = ['nomeEmpresa', 'email', 'telefone', 'endereco', 'nomeCategoria'];
+        $name = "Empresa Editada";
+        $email = "editado@empresa.com.br";
+    
+        $result = $this->Empresa->update($name, $email, $id_Empresa);
         
-        foreach ($requiredFields as $field) {
-            if (!isset($_POST[$field]) || empty($_POST[$field])) {
-                echo "Preencha o campo " . ucfirst($field) . "!";
-                return;
-            }
-        }
-
-        $name = $_POST['nomeEmpresa'];
-        $email = $_POST['email'];
-        $telefone = $_POST['telefone'];
-        $endereco = $_POST['endereco'];
-        $nomeCategoria = $_POST['nomeCategoria'];
-
-        $result = $this->company->update($id_Empresa, $name, $email, $telefone, $endereco, $nomeCategoria);
-
         if ($result === true) {
-            echo "Empresa atualizada com sucesso!";
+            echo "Empresa editada com sucesso!";
         } else {
-            echo "Desculpe, algo deu errado: " . $result;
+            echo "Desculpa, algo deu errado: " . $result;
         }
     }
 
