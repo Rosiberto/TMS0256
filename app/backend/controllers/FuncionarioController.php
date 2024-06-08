@@ -31,7 +31,7 @@ class FuncionarioController extends RenderView {
 
             $empresas = $this->funcionario->getEmpresas();
             $funcoesEmpregado = $this->funcionario->getFuncoesEmpregado();
-            $this->loadView("FormularioFuncionario", ['empresas' => $empresas, 'funcoesEmpregado' => $funcoesEmpregado]);
+            $this->loadView("Funcionario", ['empresas' => $empresas, 'funcoesEmpregado' => $funcoesEmpregado]);
         }
 
             $nomeUsuario = $_POST['nomeUsuario'];
@@ -52,35 +52,34 @@ class FuncionarioController extends RenderView {
 
 
 
-    public function update($id) {
-        $id_funcionario = $id[0];
+    // public function update($id) {
+    //     $id_funcionario = $id[0];
 
-        $nome = "Funcionário Editado";
+    //     $nome = "Funcionário Editado";
 
-        $result = $this->Funcionario->update($nome, $id_funcionario);
+    //     $result = $this->Funcionario->update($nome, $id_funcionario);
         
-        if ($result === true) {
-            echo "Funcionário editado com sucesso!";
-        } else {
-            echo "Desculpa, algo deu errado: " . $result;
-        }
-    }
+    //     if ($result === true) {
+    //         echo "Funcionário editado com sucesso!";
+    //     } else {
+    //         echo "Desculpa, algo deu errado: " . $result;
+    //     }
+    // }
 
-    public function delete($id) {
-        $id_funcionario = $id[0];
+    // public function delete($id) {
+    //     $id_funcionario = $id[0];
     
-        $result = $this->Funcionario->delete($id_funcionario);
+    //     $result = $this->Funcionario->delete($id_funcionario);
         
-        if ($result === true) {
-            echo "Funcionário deletado com sucesso!";
-        } else {
-            echo "Desculpa, algo deu errado: " . $result;
-        }        
-    }
+    //     if ($result === true) {
+    //         echo "Funcionário deletado com sucesso!";
+    //     } else {
+    //         echo "Desculpa, algo deu errado: " . $result;
+    //     }        
+    // }
 
-    private function showCreateForm() {
-        $empresas = $this->FuncionarioModel->getEmpresas();
-    }
+    // private function showCreateForm() {
+    //     $empresas = $this->FuncionarioModel->getEmpresas();
+    // }
 
 
-}

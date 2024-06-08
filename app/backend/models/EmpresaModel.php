@@ -38,10 +38,10 @@ class EmpresaModel extends Database {
         }
     }
 
-    public function update($name, $email, $id) {
+    public function update($name, $endereco, $telefone, $categoria, $email, $id_Empresa) {
         try {
-            $stm = $this->pdo->prepare("UPDATE empresa SET nome = ?, email = ? WHERE id_empresa = ?");
-            $stm->execute([$name, $email, $id]);
+            $stm = $this->pdo->prepare("UPDATE empresa SET nome = ?,endereco = ?, telefone = ?, categoria = ? email = ? WHERE id = ?");
+            $stm->execute([$name, $endereco, $telefone, $categoria, $email, $id_Empresa]);
             return true;
         } catch (PDOException $e) {
             return false;
@@ -50,7 +50,7 @@ class EmpresaModel extends Database {
 
     public function delete($id) {
         try {
-            $stm = $this->pdo->prepare("DELETE FROM empresa WHERE id_empresa = ?");
+            $stm = $this->pdo->prepare("DELETE FROM empresa WHERE id = ?");
             $stm->execute([$id]);
             return true;
         } catch (PDOException $e) {

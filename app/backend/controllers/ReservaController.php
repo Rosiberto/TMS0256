@@ -19,32 +19,51 @@ class ReservaController extends RenderView {
     }
 
     public function create() {
-        $name = "joaozinho";
-        $email = "joaozinho@gmail.com";
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+            $requiredFields = ['check_in', 'check_out', 'valor_Pagamento', 'quarto'];
     
-        $result = $this->reserva->create($name, $email);
-        
-        if ($result === true) {
-            echo "Reserva criada com sucesso!";
-        } else {
-            echo "Desculpa, algo deu errado: " . $result;
-        }
+            foreach ($requiredFields as $field) {
+                if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                    echo "Preencha o campo " . ucfirst($field) . "!";
+                    return;
+                }
+            }
+
+            $check_in = $_POST['check_in'];
+            $check_out = $_POST['check_out'];
+            $valor_Pagamento = $_POST['valor_Pagamento'];
+            $quarto = $_POST['quarto'];
+
+            $result = $this->reservaModel->create($check_in, $check_out, $valor_Pagamento, $quarto);
+            
+            if ($result === true) {
+                echo "Reserva criada com sucesso!";
+            } else {
+                echo "Desculpa, algo deu errado: " . $result;
+            }
     }
+}
 
     public function update($id) {
-        $id_reserva = $id[0];
+            $id_reserva = $id[0];
 
-        $name = "editado";
-        $email = "editado@gmail.com";
-    
-        $result = $this->reserva->update($name, $email, $id_reserva);
-        
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $id_reserva = $id[0];
+            $check_in = $_POST['check_in'];
+            $check_out = $_POST['check_out'];
+            $valor_Pagamento = $_POST['valor_Pagamento'];
+            $quarto = $_POST['quarto'];
+
+        $result = $this->reservaModel->update($id_reserva, $check_in, $check_out, $valor_Pagamento, $quarto);
+
         if ($result === true) {
-            echo "Reserva editada com sucesso!";
+            echo "Reserva atualizada com sucesso!";
         } else {
             echo "Desculpa, algo deu errado: " . $result;
         }
     }
+}
 
     public function delete($id) {
         $id_reserva = $id[0];

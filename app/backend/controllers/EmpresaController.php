@@ -43,15 +43,23 @@ class EmpresaController extends RenderView {
     public function update($id) {
         $id_Empresa = $id[0];
 
-        $name = "Empresa Editada";
-        $email = "editado@empresa.com.br";
-    
-        $result = $this->Empresa->update($name, $email, $id_Empresa);
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            
+
+            $name = $_POST['nomeEmpresa'];
+            $endereco =$_POST['endereco'];
+            $telefone =$_POST['telefone'];
+            $categoria =$_POST['nomeCategoria'];
+            $email =$_POST['email'];
+            
         
-        if ($result === true) {
-            echo "Empresa editada com sucesso!";
-        } else {
-            echo "Desculpa, algo deu errado: " . $result;
+            $result = $this->Empresa->create($name, $endereco, $telefone, $categoria, $email,  $id_Empresa);
+            
+            if ($result === true) {
+                echo "Empresa criada com sucesso!";
+            } else {
+                echo "Desculpa, algo deu errado: " . $result;
+            }
         }
     }
 

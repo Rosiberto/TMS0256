@@ -8,7 +8,7 @@ $routes = [
     '/cliente/novo' => 'ClientController@create',
     '/cliente/editar/{id}' => 'ClientController@update',
     '/cliente/deletar/{id}' => 'ClientController@delete',
-    '/cliente/perfil/financeiro' => 'ClientController@validate',
+    '/cliente/{id}/financeiro' => 'ClientController@validate',
 
          
 
@@ -34,10 +34,18 @@ $routes = [
     '/reserva/editar/{id}' => 'ReservaController@update',
     '/reserva/deletar/{id}' => 'ReservaController@delete',
 
-    // '/reserva' => 'ReservaController@index',
-    // '/reserva/{id}' => 'ReservaController@show',
-    // '/reserva/novo' => 'ReservaController@create',
-    // '/reserva/editar/{id}' => 'ReservaController@update',
-    // '/reserva/deletar/{id}' => 'ReservaController@delete'
+    '/cartao' => 'CartaoController@index',
+    '/cartao/{id}' => 'CartaoController@show',
+    '/cartao/novo' => 'CartaoController@create',
+    '/cartao/editar/{id}' => 'CartaoController@update',
+
+
+    '/quarto' => 'QuartoController@index',
+    '/quarto/{id}' => 'QuartoController@show',
+    '/quarto/novo' => 'QuartoController@create',
+    '/quarto/editar/{id}' => 'QuartoController@update',
+    '/quarto/deletar/{id}' => 'QuartoController@delete'
+  
+    
 
 ];
