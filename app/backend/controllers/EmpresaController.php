@@ -1,21 +1,21 @@
 <?php
 
 class EmpresaController extends RenderView {
-    private $Empresa;
+    private $empresa;
 
     public function __construct() {
-        $this->Empresa = new EmpresaModel();
+        $this->empresa = new EmpresaModel();
     }
 
     public function index() {
-        $empresas = $this->Empresa->fetch();
-        $this->loadView("Empresa", ['empresas' => $empresas]);
+        $empresas = $this->empresa->fetch();
+        $this->loadView("empresa", ['empresas' => $empresas]);
     }
 
     public function show($id) {
         $id_Empresa = $id[0];
-        $Empresa = $this->Empresa->fetchById($id_Empresa);
-        $this->loadView('EmpresaShow', ['empresa' => $Empresa]);
+        $empresa = $this->empresa->fetchById($id_Empresa);
+        $this->loadView('EmpresaShow', ['empresa' => $empresa]);
     }
 
     public function create() {
@@ -30,10 +30,10 @@ class EmpresaController extends RenderView {
         $email =$_POST['email'];
         
     
-        $result = $this->Empresa->create($name, $endereco, $telefone, $categoria, $email);
+        $result = $this->empresa->create($name, $endereco, $telefone, $categoria, $email);
         
         if ($result === true) {
-            echo "Empresa criada com sucesso!";
+            echo "empresa criada com sucesso!";
         } else {
             echo "Desculpa, algo deu errado: " . $result;
         }
@@ -53,10 +53,10 @@ class EmpresaController extends RenderView {
             $email =$_POST['email'];
             
         
-            $result = $this->Empresa->create($name, $endereco, $telefone, $categoria, $email,  $id_Empresa);
+            $result = $this->empresa->create($name, $endereco, $telefone, $categoria, $email,  $id_Empresa);
             
             if ($result === true) {
-                echo "Empresa criada com sucesso!";
+                echo "empresa criada com sucesso!";
             } else {
                 echo "Desculpa, algo deu errado: " . $result;
             }
@@ -66,10 +66,10 @@ class EmpresaController extends RenderView {
     public function delete($id) {
         $id_Empresa = $id[0];
     
-        $result = $this->Empresa->delete($id_Empresa);
+        $result = $this->empresa->delete($id_Empresa);
         
         if ($result === true) {
-            echo "Empresa deletada com sucesso!";
+            echo "empresa deletada com sucesso!";
         } else {
             echo "Desculpa, algo deu errado: " . $result;
         }        

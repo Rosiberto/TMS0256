@@ -2,9 +2,11 @@
 
 class ClientController extends RenderView {
     private $client;
+    private $empresa;
 
     public function __construct() {
         $this->client = new ClientModel();
+        $this->empresa = new EmpresaModel();
     }
 
     public function index() {
@@ -22,7 +24,9 @@ class ClientController extends RenderView {
     
     public function create() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $requiredFields = ['nome', 'email', 'telefone', 'morada', 'documento', 'nacionalidade', 'dataNascimento', 'fkEmpresaID'];
+            $requiredFields = ['nome', 'email', 'telefone', 'morada', 'cpf', 'nacionalidade', 'dataNascimento', 'FkEmpresaID'];
+
+            $_POST['FkEmpresaID'] = 1;
 
             foreach ($requiredFields as $field) {
                 if (!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -35,19 +39,22 @@ class ClientController extends RenderView {
             $email = $_POST['email'];
             $telefone = $_POST['telefone'];
             $morada = $_POST['morada'];
-            $documento = $_POST['documento'];
+            $documento = $_POST['cpf'];
             $nacionalidade = $_POST['nacionalidade'];
             $dataNascimento = $_POST['dataNascimento'];
-            $fkEmpresaID = $_POST['fkEmpresaID'];
+            $fkEmpresaID = $_POST['FkEmpresaID'];
 
-            if ($this->clientModel->create($nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID)) {
+            if ($this->client->create($nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID)) {
                 echo "Cliente criado com sucesso!";
             } else {
                 echo "Desculpe, algo deu errado, tente mais tarde!";
             }
         }
-            $this->showCreateForm();
+        else {
+            $empresaList = $this->empresa->fetch();
+            $this->loadView('clienteCreate', ['empresas' => $empresaList]);
         }
+    }
 
     public function update($id) {
     $id_client = $id[0];
@@ -61,8 +68,6 @@ class ClientController extends RenderView {
         }
     }
     
-    $this->showCreateForm();
-
     $name = $_POST['nome'];
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];

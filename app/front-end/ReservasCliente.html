@@ -24,49 +24,31 @@
         </ul>
       </div>
     </nav>
-    <div class="mt-3 table table-bordered" id="tabela-container" style="display: flex; justify-content: center;"></div>
+    <div class="mt-3"> 
+        <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Protocolo</th>
+                    <th scope="col">Identificação do Quarto</th>
+                    <th scope="col">Data</th>
+                    
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Lago dos Descansos</td>
+                    <td>16/07/2022</td>                    
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Hotel Estácio</td>
+                    <td>10/01/2023</td>                    
+                </tr>
+                </tbody>
+        </table>
 
-    <script>
-      // Dados para a tabela
-      const data = [
-          ["ID", "Quantidade de Pessoas", "Entrada", "Saída" , "Serviço", "Status"],
-          ["0","5", "16/07/2021", "21/07/2021", "Turismo Rural", "Finalizado"],
-          ["1","4", "16/07/2021", "21/07/2021", "Turismo Rural", "Finalizado"],
-          ["2","2", "16/07/2021", "21/07/2021", "Turismo Rural", "Finalizado"],
-          ["3","3", "16/07/2021", "21/07/2021", "Turismo Rural", "Finalizado"]
-      ];
-
-      // Função para criar a tabela
-      function createTable(data) {
-          // Cria o elemento da tabela
-          const table = document.createElement('table');
-          table.border = '1';
-
-          // Loop para criar as linhas da tabela
-          data.forEach((rowData, rowIndex) => {
-              const row = document.createElement('tr');
-
-              // Loop para criar as células da linha
-              rowData.forEach(cellData => {
-                  const cell = rowIndex === 0 ? document.createElement('th') : document.createElement('td');
-                  cell.textContent = cellData;
-                  row.appendChild(cell);
-              });
-
-              // Adiciona a linha à tabela
-              table.appendChild(row);
-          });
-
-          return table;
-      }
-
-      // Seleciona o container onde a tabela será inserida
-      const tableContainer = document.getElementById('tabela-container');
-
-      // Cria a tabela e adiciona ao container
-      const table = createTable(data);
-      tableContainer.appendChild(table);
-  </script>
+    </div>
     
 
 </div>

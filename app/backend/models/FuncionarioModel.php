@@ -50,9 +50,9 @@ class FuncionarioModel extends Database {
             $stm = $this->pdo->prepare($sql);
             $stm->execute([$nomeUsuario, $senha]);
 
-            $sql1 = "INSERT INTO empregado (Nome, fk_Empresa_ID, fk_Funcao_Empregado_ID, fk_Login_ID) VALUES (?, ?, ?, ?)";
+            $sql1 = "INSERT INTO empregado (Nome, fk_Empresa_ID, fk_Funcao_Empregado_ID) VALUES (?, ?, ?)";
             $stm = $this->pdo->prepare($sql1);
-            $stm->execute([$nome, $fkEmpresa,  $fkFuncaoEmpregado, $this->pdo->lastInsertId()]);
+            $stm->execute([$nome, $fkEmpresa,  $fkFuncaoEmpregado]);
       
             if ($stm->rowCount() > 0) {
                 return true;

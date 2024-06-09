@@ -149,13 +149,29 @@
     
     <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
-        <form>
+        <form action = "http://localhost/TMS0256/app/backend/empresa/novo" method = "post">
           <fieldset class="grupo">
               <!-- Campo do Nome -->
               <div class="campo">
                   <label for="nomeEmpresa"><strong>Nome</strong></label>
                   <input type="text" name="nomeEmpresa" id="nomeEmpresa" placeholder="Nome da empresa" required>
               </div>
+
+              <fieldset class="grupo">
+              <!-- Campo de Endereço -->
+          <div class="campo">
+             <label for="endereco"><strong>Endereço</strong></label>
+             <input type="cpf" name="endereco" id="endereco" placeholder="Informe o Endereço" required>
+            </div>
+         </fieldset>  
+         
+         <!-- Campo de telefone -->
+         <div class="campo">
+             <label for="telefone"><strong>Telefone</strong></label>
+             <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
+         </div>
+     </fieldset>
+     
               <div class="campo">
                 <label for="nomeCategoria"><strong>Categoria</strong></label>
                 <input type="text" name="nomeCategoria" id="nomeCategoria" placeholder="Categoria" required>
@@ -170,20 +186,7 @@
           </div>
   
   
-          <!-- Campo de telefone -->
-          <div class="campo">
-              <label for="telefone"><strong>Telefone</strong></label>
-              <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
-          </div>
-      </fieldset>
   
-      <fieldset class="grupo">
-              <!-- Campo de Endereço -->
-          <div class="campo">
-              <label for="endereco"><strong>Endereço</strong></label>
-              <input type="cpf" name="endereco" id="endereco" placeholder="Informe o Endereço" required>
-          </div>
-      </fieldset>  
           <!-- Botão para conclusão do cadastro -->
           <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
       </form>

@@ -1,1 +1,8 @@
-<h1>Cliente criado!</h1>
+<?php
+
+session_start();
+$_SESSION['empresasList'] = $empresas;
+
+header('Location: ../../front-end/cadastro.php');
+
+die();
