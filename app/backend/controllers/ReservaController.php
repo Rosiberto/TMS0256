@@ -9,7 +9,7 @@ class ReservaController extends RenderView {
 
     public function index() {
         $reservas = $this->reserva->fetch();
-        $this->loadView("reservas", ['reservas' => $reservas]);
+        $this->loadView("reserva", ['reservas' => $reservas]);
     }
 
     public function show($id) {
@@ -19,10 +19,9 @@ class ReservaController extends RenderView {
     }
 
     public function create() {
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $requiredFields = ['check_in', 'check_out', 'valor_Pagamento', 'quarto', 'qtd_Pessoas'];
 
-            $requiredFields = ['check_in', 'check_out', 'valor_Pagamento', 'quarto'];
-    
             foreach ($requiredFields as $field) {
                 if (!isset($_POST[$field]) || empty($_POST[$field])) {
                     echo "Preencha o campo " . ucfirst($field) . "!";
@@ -34,36 +33,37 @@ class ReservaController extends RenderView {
             $check_out = $_POST['check_out'];
             $valor_Pagamento = $_POST['valor_Pagamento'];
             $quarto = $_POST['quarto'];
+            $qtd_Pessoas = $_POST['qtd_Pessoas'];
 
-            $result = $this->reservaModel->create($check_in, $check_out, $valor_Pagamento, $quarto);
-            
+            $result = $this->reserva->create($check_in, $check_out, $valor_Pagamento, $quarto, $qtd_Pessoas);
+
             if ($result === true) {
                 echo "Reserva criada com sucesso!";
             } else {
                 echo "Desculpa, algo deu errado: " . $result;
             }
+        }
     }
-}
 
     public function update($id) {
-            $id_reserva = $id[0];
+        $id_reserva = $id[0];
 
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $id_reserva = $id[0];
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $check_in = $_POST['check_in'];
             $check_out = $_POST['check_out'];
             $valor_Pagamento = $_POST['valor_Pagamento'];
             $quarto = $_POST['quarto'];
+            $qtd_Pessoas = $_POST['qtd_Pessoas'];
 
-        $result = $this->reservaModel->update($id_reserva, $check_in, $check_out, $valor_Pagamento, $quarto);
+            $result = $this->reserva->update($id_reserva, $check_in, $check_out, $valor_Pagamento, $quarto, $qtd_Pessoas);
 
-        if ($result === true) {
-            echo "Reserva atualizada com sucesso!";
-        } else {
-            echo "Desculpa, algo deu errado: " . $result;
+            if ($result === true) {
+                echo "Reserva atualizada com sucesso!";
+            } else {
+                echo "Desculpa, algo deu errado: " . $result;
+            }
         }
     }
-}
 
     public function delete($id) {
         $id_reserva = $id[0];

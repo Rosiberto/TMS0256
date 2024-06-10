@@ -143,7 +143,7 @@ $funcoesEmpregado = $_SESSION['funcoesList'] ;
     </nav>
 
 
-    <!-- Cadastro de cliente-->
+    <!-- Cadastro de funcionario-->
     <div class="tela_cadastro">
       <form action="http://localhost/TMS0256/app/backend/funcionario/novo" method="post">
         <fieldset class="grupo">

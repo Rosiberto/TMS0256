@@ -1,3 +1,10 @@
+<?php 
+
+require_once '../backend/core/Auth.php';
+requireAuth();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,7 +38,7 @@
 
       <div class="btn-group" role="group">
         <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-        <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : 'ADM'; ?>
+        <?= "Olá, " . $_SESSION['usuario_tipo']; ?>
         </span>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item fs-4" href="#">Minha conta</a></li>

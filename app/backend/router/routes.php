@@ -34,18 +34,27 @@ $routes = [
     '/reserva/editar/{id}' => 'ReservaController@update',
     '/reserva/deletar/{id}' => 'ReservaController@delete',
 
+      // Rotas para financeiro
     '/cartao' => 'CartaoController@index',
     '/cartao/{id}' => 'CartaoController@show',
     '/cartao/novo' => 'CartaoController@create',
     '/cartao/editar/{id}' => 'CartaoController@update',
 
-
+    // Rotas para financeiro
     '/quarto' => 'QuartoController@index',
     '/quarto/{id}' => 'QuartoController@show',
     '/quarto/novo' => 'QuartoController@create',
     '/quarto/editar/{id}' => 'QuartoController@update',
     '/quarto/deletar/{id}' => 'QuartoController@delete',
+
+    // Rotas para serviços
+    '/servico' => 'ServicoController@index',
+    '/servico/{id}' => 'ServicoController@show',
+    '/servico/novo' => 'ServicoController@create',
+    '/servico/editar/{id}' => 'ServicoController@update',
+    '/servico/deletar/{id}' => 'ServicoController@delete',
   
+    // Rotas para login/logout
     '/login' => 'LoginController@login',
     '/logout' => 'LoginController@logout'
 

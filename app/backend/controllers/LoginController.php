@@ -30,6 +30,17 @@ class LoginController extends Database {
                 if ($empregado) {
                     $_SESSION['funcionario_id'] = $empregado['ID'];
                     $_SESSION['usuario_tipo'] = 'funcionario';
+
+                    if ($empregado['fk_Funcao_Empregado_ID'] == 1) { // 1 representa Recepcionista
+                        $_SESSION['funcionario_funcao'] = 'recepcionista';
+                        header('Location: ../front-end/LoginRecepcionista.php');
+                    } elseif ($empregado['fk_Funcao_Empregado_ID'] == 2) { // 2 representa Gerente
+                        $_SESSION['funcionario_funcao'] = 'gerente';
+                        header('Location: ../front-end/LoginGerente.php');
+                    }
+                    exit;
+                }
+
                     header('Location: ../front-end/LoginGestor.php');
                     exit;
                 } 
@@ -41,15 +52,16 @@ class LoginController extends Database {
 
             }
         }
+            public function logout() {
+                session_unset();
+                session_destroy();
+                header('Location: ../front-end/Login.php');
+                exit;
+        }
     }
 
-    public function logout() {
-        session_unset();
-        session_destroy();
-        header('Location: ../front-end/Login.php');
-        exit;
-    }
-}
+                 
+
 
 $controller = new LoginController();
 
@@ -58,3 +70,4 @@ if ($_SERVER['REQUEST_URI'] == '/login' && $_SERVER['REQUEST_METHOD'] == 'POST')
 } elseif ($_SERVER['REQUEST_URI'] == '/logout') {
     $controller->logout();
 }
+
