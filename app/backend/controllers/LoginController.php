@@ -17,10 +17,28 @@ class LoginController extends Database {
             if ($usuario && $senha == $usuario['Senha']) {
                 $_SESSION['usuario_id'] = $usuario['ID'];
                 $_SESSION['usuario_login'] = $usuario['Login'];
-                header('Location: ../front-end/LoginCliente.php');
-                exit;
+
+                $cliente = $this->login->fetchClienteByLoginId($usuario['ID']);
+                if ($cliente) {
+                    $_SESSION['cliente_id'] = $cliente['ID'];
+                    $_SESSION['usuario_tipo'] = 'cliente';
+                    header('Location: ../front-end/LoginCliente.php');
+                    exit;
+                }
+
+                $empregado = $this->login->fetchEmpregadoByLoginId($usuario['ID']);
+                if ($empregado) {
+                    $_SESSION['funcionario_id'] = $empregado['ID'];
+                    $_SESSION['usuario_tipo'] = 'funcionario';
+                    header('Location: ../front-end/LoginGestor.php');
+                    exit;
+                } 
+
+                echo 'Usuário não encontrado como cliente ou funcionário.';
             } else {
                 echo 'Login ou senha inválidos.';
+
+
             }
         }
     }
