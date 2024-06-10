@@ -36,7 +36,7 @@ class LoginController extends Database {
                         header('Location: ../front-end/LoginRecepcionista.php');
                     } elseif ($empregado['fk_Funcao_Empregado_ID'] == 2) { // 2 representa Gerente
                         $_SESSION['funcionario_funcao'] = 'gerente';
-                        header('Location: ../front-end/LoginGerente.php');
+                        header('Location: ../front-end/LoginGestor.php');
                     }
                     exit;
                 }

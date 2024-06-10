@@ -32,7 +32,7 @@ class CartaoController extends RenderView
             }
 
             if ($this->cartao->create($cardNumber, $cvc, $validity)) {
-                echo "Cartão inserido com sucesso!";
+                header("location:http://localhost/TMS0256/app/front-end/LoginCliente.php");
             } else {
                 echo "Erro ao inserir o cartão.";
             }
