@@ -44,15 +44,12 @@ class FuncionarioModel extends Database {
     //     }
     // }
 
-    public function create($nomeUsuario, $senha, $nome, $fkEmpresa, $fkFuncaoEmpregado) {
+    public function create($nome, $fkEmpresa, $fkFuncaoEmpregado, $loginId ) {
         try {
-            $sql = "INSERT INTO login (login, senha) VALUES (?, ?)";
+        
+            $sql = "INSERT INTO empregado (Nome, fk_Empresa_ID, fk_Funcao_Empregado_ID, fk_Login_ID) VALUES (?, ?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
-            $stm->execute([$nomeUsuario, $senha]);
-
-            $sql1 = "INSERT INTO empregado (Nome, fk_Empresa_ID, fk_Funcao_Empregado_ID) VALUES (?, ?, ?)";
-            $stm = $this->pdo->prepare($sql1);
-            $stm->execute([$nome, $fkEmpresa,  $fkFuncaoEmpregado]);
+            $stm->execute([$nome, $fkEmpresa,  $fkFuncaoEmpregado, $loginId]);
       
             if ($stm->rowCount() > 0) {
                 return true;

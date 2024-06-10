@@ -44,8 +44,9 @@ $routes = [
     '/quarto/{id}' => 'QuartoController@show',
     '/quarto/novo' => 'QuartoController@create',
     '/quarto/editar/{id}' => 'QuartoController@update',
-    '/quarto/deletar/{id}' => 'QuartoController@delete'
+    '/quarto/deletar/{id}' => 'QuartoController@delete',
   
-    
+    '/login' => 'LoginController@login',
+    '/logout' => 'LoginController@logout'
 
 ];

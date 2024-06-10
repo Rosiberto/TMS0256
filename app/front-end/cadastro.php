@@ -184,7 +184,7 @@ $empresas = $_SESSION['empresasList'];
             <select id="empresa" name="empresa">        
                 <?php if($empresas):?>        
                     <?php foreach( $empresas as $empresa):?>
-                        <option value="<?php echo $empresa['ID']?>"><?php echo $empresa['Nome']?></option>
+                        <option value="<?php echo $empresa['ID'];?>"><?php echo $empresa['Nome'];?></option>
                     <?php endforeach;?>
                 <?php else:?>    
                     <option disabled value="null">Sem empresa cadastrada</option>
@@ -237,7 +237,19 @@ $empresas = $_SESSION['empresasList'];
                 <option value="EX">Estrangeiro</option> -->
             </select>
             </div>
-          </fieldset>   
+          </fieldset>
+          
+          <fieldset class="grupo">
+                <div class="campo">
+                    <label for="usuario"><strong>Nome de usuário</strong></label>
+                    <input type="usuario" name="usuario" id="usuario" placeholder="Informe o usuario" required>
+                </div>
+                <div class="campo">
+                    <label for="senha"><strong>Insira sua senha</strong></label>
+                    <input type="password" name="senha" id="senha" placeholder="Informe sua senha" required>
+                </div>
+
+          </fieldset>
         <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
         <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
     </form>

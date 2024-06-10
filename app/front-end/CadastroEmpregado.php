@@ -1,8 +1,7 @@
-<?php 
+<?php
 session_start();
 $empresas = $_SESSION['empresasList'];
-$funcionarioFuncao = $_SESSION['funcoesList'];
-
+$funcoesEmpregado = $_SESSION['funcoesList'] ;
 ?>
 
 <!DOCTYPE html>
@@ -146,7 +145,7 @@ $funcionarioFuncao = $_SESSION['funcoesList'];
 
     <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
-    <form action="http://localhost/TMS0256/app/backend/funcionario/novo" method="post">
+      <form action="http://localhost/TMS0256/app/backend/funcionario/novo" method="post">
         <fieldset class="grupo">
             <!-- Campo do nome -->
             <div class="campo">
@@ -154,23 +153,12 @@ $funcionarioFuncao = $_SESSION['funcoesList'];
                 <input type="text" name="nome" id="nome" placeholder="Nome" required>
             </div>
 
-
-            <div class="campo">
-                <label for="sobrenome"><strong>ID</strong></label>
-                <input type="text" name="id" id="nomeUsuario" name="nomeUsuario" placeholder="Sobrenome" required>
-            </div>
-
-            <div class="campo">
-                <label for="nome"><strong>Senha</strong></label>
-                <input type="password" name="senha" id="senha" placeholder="senha" required>
-            </div>
-
-            <div class="campo">
+        <div class="campo">
             <label><strong>Empresa</strong></label>
             <select id="empresa" name="fkEmpresa">        
                 <?php if($empresas):?>        
                     <?php foreach( $empresas as $empresa):?>
-                        <option value="<?php echo $empresa['ID']?>"><?php echo $empresa['Nome']?></option>
+                        <option value="<?php echo $empresa['ID'];?>"><?php echo $empresa['Nome'];?></option>
                     <?php endforeach;?>
                 <?php else:?>    
                     <option disabled value="null">Sem empresa cadastrada</option>
@@ -178,22 +166,38 @@ $funcionarioFuncao = $_SESSION['funcoesList'];
            
             </select>
 
-            <label><strong>função </strong></label>
-            <select id="funcoes" name="fkFuncaoEmpregado">        
-                <?php if($funcionarioFuncao):?>        
-                    <?php foreach( $funcionarioFuncao as $funcao):?>
-                        <option value="<?php echo $funcao['ID']?>"><?php echo $funcao['Nome_Funcao']?></option>
+            <div class="campo">
+            <label><strong>Função</strong></label>
+            <select id="empresa" name="fkFuncaoEmpregado">        
+                <?php if($funcoesEmpregado):?>        
+                    <?php foreach( $funcoesEmpregado as $funcao):?>
+                        <option value="<?php echo $funcao['ID'];?>"><?php echo $funcao['Nome_Funcao'];?></option>
                     <?php endforeach;?>
                 <?php else:?>    
-                    <option disabled value="null">Sem função cadastrada</option>
+                    <option disabled value="null">Sem empresa cadastrada</option>
                 <?php endif;?>
            
             </select>
    
         </div>
-        
-        </fieldset> 
 
+    </fieldset>
+
+          <fieldset class="grupo">
+                <div class="campo">
+                    <label for="usuario"><strong>Nome de usuário</strong></label>
+                    <input type="usuario" name="usuario" id="usuario" placeholder="Informe o usuario" required>
+                </div>
+                <div class="campo">
+                    <label for="senha"><strong>Insira sua senha</strong></label>
+                    <input type="password" name="senha" id="senha" placeholder="Informe sua senha" required>
+                </div>
+
+          </fieldset>
+        <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
+        <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
+    </form>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

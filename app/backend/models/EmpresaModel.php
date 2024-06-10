@@ -16,6 +16,15 @@ class EmpresaModel extends Database {
         }
     }
 
+    public function fetchAll() {
+        $stm = $this->pdo->query("SELECT id, nome FROM empresa");
+        if($stm->rowCount() > 0) {
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return [];
+        }
+    }
+
     public function fetchById($id) {
         $stm = $this->pdo->prepare("SELECT * FROM empresa WHERE id = ?");
         $stm->execute([$id]);

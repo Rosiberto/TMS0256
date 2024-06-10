@@ -3,10 +3,12 @@
 class ClientController extends RenderView {
     private $client;
     private $empresa;
+    private $login;
 
     public function __construct() {
         $this->client = new ClientModel();
         $this->empresa = new EmpresaModel();
+        $this->login = new LoginModel();
     }
 
     public function index() {
@@ -24,9 +26,7 @@ class ClientController extends RenderView {
     
     public function create() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $requiredFields = ['nome', 'email', 'telefone', 'morada', 'cpf', 'nacionalidade', 'dataNascimento', 'FkEmpresaID'];
-
-            $_POST['FkEmpresaID'] = 1;
+            $requiredFields = ['nome', 'email', 'telefone', 'morada', 'cpf', 'nacionalidade', 'dataNascimento', 'empresa', 'usuario', 'senha'];
 
             foreach ($requiredFields as $field) {
                 if (!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -42,9 +42,15 @@ class ClientController extends RenderView {
             $documento = $_POST['cpf'];
             $nacionalidade = $_POST['nacionalidade'];
             $dataNascimento = $_POST['dataNascimento'];
-            $fkEmpresaID = $_POST['FkEmpresaID'];
+            $fkEmpresaID = $_POST['empresa'];
 
-            if ($this->client->create($nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID)) {
+            //Login
+            $login = $_POST['usuario'];
+            $senha = $_POST['senha'];
+            
+            $loginId = $this->login->create($login, $senha);
+
+            if ($this->client->create($nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID, $loginId)) {
                 echo "Cliente criado com sucesso!";
             } else {
                 echo "Desculpe, algo deu errado, tente mais tarde!";

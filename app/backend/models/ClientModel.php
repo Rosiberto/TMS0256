@@ -21,11 +21,11 @@ class ClientModel extends Database{
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
-    public function create($nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID) {
+    public function create($nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID, $fk_Login_ID) {
         try {
-            $sql = "INSERT INTO cliente (Nome, Email, Telefone, Morada, Documento, Nacionalidade, Dt_Nascimento, fk_Empresa_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO cliente (Nome, Email, Telefone, Morada, Documento, Nacionalidade, Dt_Nascimento, fk_Empresa_ID, fk_Login_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute([$nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID]);
+            return $stmt->execute([$nome, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $fkEmpresaID, $fk_Login_ID]);
             if ($this->pdo->lastInsertId() > 0) {
                 return true;
             } else {

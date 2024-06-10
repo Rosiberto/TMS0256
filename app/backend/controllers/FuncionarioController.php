@@ -6,6 +6,7 @@ class FuncionarioController extends RenderView {
     public function __construct() {
         $this->funcionario = new FuncionarioModel();
         $this->empresa = new EmpresaModel();
+        $this->login = new LoginModel();
     }
 
     public function index() {
@@ -21,7 +22,7 @@ class FuncionarioController extends RenderView {
 
     public function create() {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $requiredFields = ['nomeUsuario', 'senha', 'nome', 'fkEmpresa', 'fkFuncaoEmpregado'];
+            $requiredFields = ['usuario', 'senha', 'nome', 'fkEmpresa', 'fkFuncaoEmpregado'];
     
             foreach ($requiredFields as $field) {
                 if (!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -30,24 +31,57 @@ class FuncionarioController extends RenderView {
                 }
             }
 
-            $nomeUsuario = $_POST['nomeUsuario'];
-            $senha = $_POST['senha'];
+           
             $nome = $_POST['nome'];
             $fkEmpresa = $_POST['fkEmpresa'];
             $fkFuncaoEmpregado = $_POST['fkFuncaoEmpregado'];
+
+            $login = $_POST['usuario'];
+            $senha = $_POST['senha'];
+            
+            $loginId = $this->login->create($login, $senha);
           
-            if ($this->funcionario->create($nomeUsuario, $senha, $nome, $fkEmpresa,$fkFuncaoEmpregado)) {
-                echo "funcionario criado com sucesso!";
+            $this->funcionario->create($nome, $fkEmpresa, $fkFuncaoEmpregado, $loginId );
+          
             } else {
-                echo "Desculpe, algo deu errado, tente mais tarde!";
+                $empresas = $this->empresa->fetchAll();
+                $this->loadView("FuncionarioCreate", ['empresas' => $empresas, 'funcoesEmpregado' => $funcoesEmpregado]);
+                $funcoesEmpregado = $this->funcionario->getFuncoesEmpregado();
+                $this->loadView("FuncionarioCreate", ['funcionario' => $funcoesEmpregado]);
             }
-        }
-        else {
-            $empresaList = $this->empresa->fetch();
-            $this->loadView('funcionarioCreate', ['empresas' => $empresaList]);
-            $funcionarioFuncao = $this->funcionario->getFuncoesEmpregado();
-            $this->loadView('funcionarioCreate', ['funcionarios' => $funcionarioFuncao]);
-        }
+        } 
     }
-}
+
+
+
+    // public function update($id) {
+    //     $id_funcionario = $id[0];
+
+    //     $nome = "Funcionário Editado";
+
+    //     $result = $this->Funcionario->update($nome, $id_funcionario);
+        
+    //     if ($result === true) {
+    //         echo "Funcionário editado com sucesso!";
+    //     } else {
+    //         echo "Desculpa, algo deu errado: " . $result;
+    //     }
+    // }
+
+    // public function delete($id) {
+    //     $id_funcionario = $id[0];
+    
+    //     $result = $this->Funcionario->delete($id_funcionario);
+        
+    //     if ($result === true) {
+    //         echo "Funcionário deletado com sucesso!";
+    //     } else {
+    //         echo "Desculpa, algo deu errado: " . $result;
+    //     }        
+    // }
+
+    // private function showCreateForm() {
+    //     $empresas = $this->FuncionarioModel->getEmpresas();
+    // }
+
 
