@@ -54,7 +54,7 @@
     <div class="container mt-5">
         <h1 class="text-center">Indicadores de Quartos</h1>
         <div class="row mt-4">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="card text-white bg-success mb-3">
                     <div class="card-header">Disponíveis</div>
                     <div class="card-body">
@@ -63,30 +63,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="card text-white bg-danger mb-3">
                     <div class="card-header">Ocupados</div>
                     <div class="card-body">
                         <h5 class="card-title" id="occupiedRooms">0</h5>
                         <p class="card-text">Quartos ocupados.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">Em Manutenção</div>
-                    <div class="card-body">
-                        <h5 class="card-title" id="maintenanceRooms">0</h5>
-                        <p class="card-text">Quartos em manutenção.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Preço Médio</div>
-                    <div class="card-body">
-                        <h5 class="card-title" id="averagePrice">R$0</h5>
-                        <p class="card-text">Preço médio por noite.</p>
                     </div>
                 </div>
             </div>
@@ -102,15 +84,11 @@
             // Contadores para os diferentes estados dos quartos
             let availableCount = 0;
             let occupiedCount = 0;
-            let maintenanceCount = 0;
-            let totalPrice = 0;
-            let totalRooms = 0;
 
             // Loop pelos quartos na tabela
             roomTableBody.querySelectorAll('tr').forEach(row => {
-                // Obtém o status e o preço do quarto
+                // Obtém o status do quarto
                 const status = row.cells[3].textContent.trim();
-                const price = parseFloat(row.cells[2].textContent.replace('R$', ''));
 
                 // Incrementa os contadores apropriados
                 switch (status) {
@@ -120,21 +98,12 @@
                     case 'Ocupado':
                         occupiedCount++;
                         break;
-                    case 'Em Manutenção':
-                        maintenanceCount++;
-                        break;
                 }
-
-                // Soma os preços dos quartos para calcular o preço médio
-                totalPrice += price;
-                totalRooms++;
             });
 
             // Atualiza os elementos HTML com os novos valores
             document.getElementById('availableRooms').textContent = availableCount;
             document.getElementById('occupiedRooms').textContent = occupiedCount;
-            document.getElementById('maintenanceRooms').textContent = maintenanceCount;
-            document.getElementById('averagePrice').textContent = `R$${(totalPrice / totalRooms).toFixed(2)}`;
         }
 
         // Chama a função de atualização dos indicadores ao carregar a página

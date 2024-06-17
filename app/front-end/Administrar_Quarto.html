@@ -176,9 +176,8 @@
             <thead>
                 <tr>
                     <th>Número do Quarto</th>
-                    <th>Tipo de Quarto</th>
-                    <th>Preço por Noite</th>
-                    <th>Status</th>
+                    <th>Capacidade de Pessoas</th>
+                    <th>Empresa</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -198,30 +197,18 @@
                 <label for="roomNumber">Número do Quarto:</label>
                 <input type="text" id="roomNumber" name="roomNumber" required>
 
-                <label for="roomType">Tipo de Quarto:</label>
-                <select id="roomType" name="roomType" required>
-                    <option value="single">Solteiro</option>
-                    <option value="double">Casal</option>
-                    <option value="suite">Suíte</option>
-                </select>
+                <label for="roomCapacity">Capacidade de Pessoas:</label>
+                <input type="number" id="roomCapacity" name="roomCapacity" required>
 
-                <label for="roomPrice">Preço por Noite:</label>
-                <input type="number" id="roomPrice" name="roomPrice" required>
-
-                <label for="roomStatus">Status:</label>
-                <select id="roomStatus" name="roomStatus" required>
-                    <option value="available">Disponível</option>
-                    <option value="occupied">Ocupado</option>
-                    <option value="maintenance">Em Manutenção</option>
-                </select>
+                <label for="roomCompany">Empresa:</label>
+                <input type="text" id="roomCompany" name="roomCompany" required>
 
                 <button type="submit">Salvar</button>
             </form>
         </div>
     </div>
 
-    <!-- <script src="scripts.js"></script> -->
-    
+    <!-- Script JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('roomModal');
@@ -249,17 +236,15 @@
             roomForm.onsubmit = function(event) {
                 event.preventDefault();
                 const roomNumber = document.getElementById('roomNumber').value;
-                const roomType = document.getElementById('roomType').value;
-                const roomPrice = document.getElementById('roomPrice').value;
-                const roomStatus = document.getElementById('roomStatus').value;
+                const roomCapacity = document.getElementById('roomCapacity').value;
+                const roomCompany = document.getElementById('roomCompany').value;
 
                 // Criar uma nova linha na tabela com os dados do quarto
                 const newRow = document.createElement('tr');
                 newRow.innerHTML = `
                     <td>${roomNumber}</td>
-                    <td>${roomType}</td>
-                    <td>${roomPrice}</td>
-                    <td>${roomStatus}</td>
+                    <td>${roomCapacity}</td>
+                    <td>${roomCompany}</td>
                     <td>
                         <button class="edit-btn">Editar</button>
                         <button class="delete-btn">Excluir</button>
@@ -279,9 +264,8 @@
 
                     // Preencher o formulário de edição com os dados do quarto
                     document.getElementById('roomNumber').value = cells[0].textContent;
-                    document.getElementById('roomType').value = cells[1].textContent;
-                    document.getElementById('roomPrice').value = cells[2].textContent;
-                    document.getElementById('roomStatus').value = cells[3].textContent;
+                    document.getElementById('roomCapacity').value = cells[1].textContent;
+                    document.getElementById('roomCompany').value = cells[2].textContent;
 
                     // Alterar o título do modal para refletir a ação de edição
                     document.getElementById('modalTitle').textContent = 'Editar Quarto';
@@ -295,7 +279,8 @@
         });
     </script>
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
 </body>
 </html>
+>>>>>>> 2414adcaa76754381594dff6cb5da7b168edfad7
