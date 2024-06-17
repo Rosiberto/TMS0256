@@ -59,7 +59,7 @@ requireAuth();
           </button>
         </a>
         
-        <a href="FinanceiroCliente.php">
+        <a href="FinanceiroCliente.html">
           <button type="button" class="btn btn-light btn-lg me-2 custom-btn">
           <span class="text-dark">Financeiro</span>
           </button>

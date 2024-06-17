@@ -53,6 +53,14 @@ $routes = [
     '/servico/novo' => 'ServicoController@create',
     '/servico/editar/{id}' => 'ServicoController@update',
     '/servico/deletar/{id}' => 'ServicoController@delete',
+
+    // Rotas para estadia
+    '/estadia' => 'EstadiaController@index',
+    '/estadia/{id}' => 'EstadiaController@show',
+    '/estadia/novo' => 'EstadiaController@create',
+    '/estadia/editar/{id}' => 'EstadiaController@update',
+    '/estadia/deletar/{id}' => 'EstadiaController@delete',
+    '/estadia/search' => 'EstadiaController@search',
   
     // Rotas para login/logout
     '/login' => 'LoginController@login',

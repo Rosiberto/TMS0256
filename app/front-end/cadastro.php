@@ -1,6 +1,6 @@
 <?php
 session_start();
-$empresas = $_SESSION['empresasList'];
+$empresaList = $_SESSION['empresaList'];
 ?>
 
 <!DOCTYPE html>
@@ -182,8 +182,8 @@ $empresas = $_SESSION['empresasList'];
         <div class="campo">
             <label><strong>Empresa</strong></label>
             <select id="empresa" name="empresa">        
-                <?php if($empresas):?>        
-                    <?php foreach( $empresas as $empresa):?>
+                <?php if($ $empresaList):?>        
+                    <?php foreach($empresaList as $empresa):?>
                         <option value="<?php echo $empresa['ID'];?>"><?php echo $empresa['Nome'];?></option>
                     <?php endforeach;?>
                 <?php else:?>    

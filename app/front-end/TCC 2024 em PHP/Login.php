@@ -44,14 +44,14 @@
     <!-- Seção de Login -->
     <div class="login-section">
         <h2>Login</h2>
-        <form id="login-form" action="#" method="post">
+        <form id="login-form" action="http://localhost/TMS0256/app/backend/login" method="post">
             <div class="mb-3">
-                <label for="email" class="form-label">E-mail:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <label for="login" class="form-label">Login:</label>
+                <input type="login" class="form-control" id="login" name="login" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Senha:</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <label for="senha" class="form-label">Senha:</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
             </div>
             <button type="submit" class="btn btn-dark btn-primary mt-3">Login</button>
             <div class="forgot-password mt-3">

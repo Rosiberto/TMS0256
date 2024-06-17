@@ -42,7 +42,7 @@ requireAuth();
         </span>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item fs-4" href="#">Minha conta</a></li>
-          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/backend/logout">Sair</a></li> 
+          <li><a class="dropdown-item fs-4" href="#">Sair</a></li> 
         </ul>
       </div>
     </nav>
@@ -51,30 +51,30 @@ requireAuth();
     <div class="center-vertical" style="margin-top: -50px;">         
       <h1 class="m-4">Configuração</h1>
       <div>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="DadosDaEmpresa.php" role="button">Dados da Empresa</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarServicos.php" role="button">Atualizar Serviços</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="CadastroEmpregado.php" role="button">Cadastro de Empregado</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarQuartos.php" role="button">Administrar Quartos</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="DadosDaEmpresa.html" role="button">Dados da Empresa</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarServicos.html" role="button">Atualizar Serviços</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="CadastroEmpregado.html" role="button">Cadastro de Empregado</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarQuartos.html" role="button">Administrar Quartos</a>
       </div>
 
       <h1 class="m-4">Registro de Clientes</h1>
       <div>
         <a class="btn btn-light btn-lg me-2 custom-btn" href="cadastro.php" role="button">Cadastro de Clientes</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="ConsultarCliente.php" role="button">Consultar Clientes</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="ConsultarCliente.html" role="button">Consultar Clientes</a>
       </div>
 
       <h1 class="m-4">Reservas</h1>
       <div>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="RegistrarReserva.php" role="button">Registrar Reserva</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarReserva.php" role="button">Atualizar Reserva</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="RegistrarReserva.html" role="button">Registrar Reserva</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarReserva.html" role="button">Atualizar Reserva</a>
       </div>
 
       <h1 class="m-4">Estadias</h1>
       <div>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="Check-in.php" role="button">Check-in</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="Check-out.php" role="button">Check-out</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarEstadia.php" role="button">Atualizar Estadia</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="indicador.php" role="button">Estatistica</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="Check-in.html" role="button">Check-in</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="Check-out.html" role="button">Check-out</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarEstadia.html" role="button">Atualizar Estadia</a>
+        <a class="btn btn-light btn-lg me-2 custom-btn" href="indicador.html" role="button">Estatistica</a>
       </div>
       
     </div>

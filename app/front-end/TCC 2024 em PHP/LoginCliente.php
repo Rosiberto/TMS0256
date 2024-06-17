@@ -1,3 +1,10 @@
+<?php
+
+require_once '../backend/core/Auth.php';
+requireAuth();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,11 +41,11 @@
 
       <div class="btn-group" role="group">
         <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-          Olá, Cliente!
+          Olá, <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : 'Cliente'; ?>!
         </span>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item fs-4" href="#">Minha conta</a></li>
-          <li><a class="dropdown-item fs-4" href="#">Sair</a></li> 
+          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/backend/logout">Sair</a></li> 
         </ul>
       </div>
     </nav>

@@ -58,6 +58,7 @@ class ClientController extends RenderView {
         }
         else {
             $empresaList = $this->empresa->fetch();
+            $_SESSION['empresaList'] =  $empresaList;
             $this->loadView('clienteCreate', ['empresas' => $empresaList]);
         }
     }

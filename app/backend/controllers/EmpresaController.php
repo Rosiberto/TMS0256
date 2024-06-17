@@ -51,7 +51,7 @@ class empresaController extends RenderView {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             
 
-            $name = $_POST['nomeEmpresa'];
+            $name = $_POST['nomeempresa'];
             $endereco =$_POST['endereco'];
             $telefone =$_POST['telefone'];
             $categoria =$_POST['nomeCategoria'];

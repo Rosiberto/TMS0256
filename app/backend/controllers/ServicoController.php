@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class ServicoController extends RenderView {
     private $servico;
@@ -20,7 +20,7 @@ class ServicoController extends RenderView {
 
     public function create() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $requiredFields = ['Periodo_Inicial', 'Periodo_Final', 'Qtd_Pessoa', 'Valor', 'fk_Quarto_ID'];
+            $requiredFields = ['Dt_Entrada', 'Dt_Saida', 'Servico', 'fk_Empregado_ID'];
 
             foreach ($requiredFields as $field) {
                 if (!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -29,21 +29,18 @@ class ServicoController extends RenderView {
                 }
             }
 
-            $Periodo_Inicial = $_POST['Periodo_Inicial'];
-            $Periodo_Final = $_POST['Periodo_Final'];
-            $Qtd_Pessoa = $_POST['Qtd_Pessoa'];
-            $Valor = $_POST['Valor'];
-            $fk_Quarto_ID = $_POST['fk_Quarto_ID'];
+            $dt_entrada = $_POST['Dt_Entrada'];
+            $dt_saida = $_POST['Dt_Saida'];
+            $servico = $_POST['Servico'];
+            $fk_empregado_id = $_POST['fk_Empregado_ID'];
 
-            $result = $this->servico->create($Periodo_Inicial, $Periodo_Final, $Qtd_Pessoa, $Valor, $fk_Quarto_ID);
+            $result = $this->servico->create($dt_entrada, $dt_saida, $servico, $fk_empregado_id);
 
             if ($result === true) {
                 echo "Serviço criado com sucesso!";
             } else {
                 echo "Desculpa, algo deu errado: " . $result;
             }
-        } else {
-            $this->loadView('servicoCreate');
         }
     }
 
@@ -51,54 +48,30 @@ class ServicoController extends RenderView {
         $id_servico = $id[0];
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $requiredFields = ['Periodo_Inicial', 'Periodo_Final', 'Qtd_Pessoa', 'Valor', 'fk_Quarto_ID'];
+            $dt_entrada = $_POST['Dt_Entrada'];
+            $dt_saida = $_POST['Dt_Saida'];
+            $servico = $_POST['Servico'];
+            $fk_empregado_id = $_POST['fk_Empregado_ID'];
 
-            foreach ($requiredFields as $field) {
-                if (!isset($_POST[$field]) || empty($_POST[$field])) {
-                    echo "Preencha o campo " . ucfirst($field) . "!";
-                    return;
-                }
-            }
-
-            $Periodo_Inicial = $_POST['Periodo_Inicial'];
-            $Periodo_Final = $_POST['Periodo_Final'];
-            $Qtd_Pessoa = $_POST['Qtd_Pessoa'];
-            $Valor = $_POST['Valor'];
-            $fk_Quarto_ID = $_POST['fk_Quarto_ID'];
-
-            $result = $this->servico->update($id_servico, $Periodo_Inicial, $Periodo_Final, $Qtd_Pessoa, $Valor, $fk_Quarto_ID);
+            $result = $this->servico->update($id_servico, $dt_entrada, $dt_saida, $servico, $fk_empregado_id);
 
             if ($result === true) {
                 echo "Serviço atualizado com sucesso!";
             } else {
                 echo "Desculpa, algo deu errado: " . $result;
             }
-        } else {
-            $servico = $this->servico->fetchById($id_servico);
-            $this->loadView('servicoUpdate', ['servico' => $servico]);
         }
     }
 
     public function delete($id) {
         $id_servico = $id[0];
-    
+
         $result = $this->servico->delete($id_servico);
-        
+
         if ($result === true) {
             echo "Serviço deletado com sucesso!";
         } else {
             echo "Desculpa, algo deu errado: " . $result;
-        }        
+        }
     }
 }
-?>
-
-
-
-
-
-
-
-
-
-?>

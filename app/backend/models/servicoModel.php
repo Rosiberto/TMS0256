@@ -1,7 +1,6 @@
-<?php
-
+<?php 
 class ServicoModel extends Database {
-    
+
     private $pdo;
 
     public function __construct() {
@@ -18,48 +17,54 @@ class ServicoModel extends Database {
     }
 
     public function fetchById($id) {
-        $stm = $this->pdo->prepare("SELECT * FROM servico WHERE ID = ?");
+        $stm = $this->pdo->prepare("SELECT * FROM servico WHERE id = ?");
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
-    
-    public function create($periodo_inicial, $periodo_final, $qtd_pessoas, $valor, $quarto_id) {
-        // Verificar se o quarto está disponível para o período especificado
-        $stmt = $this->pdo->prepare("SELECT * FROM servico WHERE fk_Quarto_ID = ? AND ((Periodo_Inicial BETWEEN ? AND ?) OR (Periodo_Final BETWEEN ? AND ?))");
-        $stmt->execute([$quarto_id, $periodo_inicial, $periodo_final, $periodo_inicial, $periodo_final]);
-    
-        if ($stmt->rowCount() > 0) {
-            return "O quarto já está reservado para o período especificado.";
-        }
-    
+
+    public function create($dt_entrada, $dt_saida, $servico, $fk_empregado_id) {
         try {
-            $sql = "INSERT INTO servico (Periodo_Inicial, Periodo_Final, Qtd_Pessoa, Valor, fk_Quarto_ID) VALUES (?, ?, ?, ?, ?)";
+
+            
+            $this->pdo->beginTransaction();
+            
+            $sql = "INSERT INTO servico (Dt_Entrada, Dt_Saida, Servico, fk_Empregado_ID) VALUES (?, ?, ?, ?)";
             $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute([$periodo_inicial, $periodo_final, $qtd_pessoas, $valor, $quarto_id]);
+            $stmt->execute([$dt_entrada, $dt_saida, $servico, $fk_empregado_id]);
+            
+            $this->pdo->commit();
+            return true;
         } catch (PDOException $e) {
+            $this->pdo->rollBack();
             error_log('Database error: ' . $e->getMessage());
             return false;
         }
     }
-    public function update($id, $periodo_inicial, $periodo_final, $qtd_pessoas, $valor, $quarto_id) {
+
+    public function update($id_servico, $dt_entrada, $dt_saida, $servico, $fk_empregado_id) {
+
+        $id_servico = $id;
+        
         try {
-            $sql = "UPDATE servico SET Periodo_Inicial = ?, Periodo_Final = ?, Qtd_Pessoa = ?, Valor = ?, fk_Quarto_ID = ? WHERE ID = ?";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$periodo_inicial, $periodo_final, $qtd_pessoas, $valor, $quarto_id, $id]);
-            return $stmt->rowCount() > 0;
+            $stm = $this->pdo->prepare("UPDATE servico SET Dt_Entrada = ?, Dt_Saida = ?, Servico = ?, fk_Empregado_ID = ? WHERE id = ?");
+            $stm->execute([$dt_entrada, $dt_saida, $servico, $fk_empregado_id, $id_servico]);
+            return true;
         } catch (PDOException $e) {
             error_log('Database error: ' . $e->getMessage());
-            return $e->getMessage();
+            return false;
         }
     }
 
     public function delete($id) {
+        $id_servico = $id;
         try {
-            $stm = $this->pdo->prepare("DELETE FROM servico WHERE ID = ?");
-            $stm->execute([$id]);
+            $stm = $this->pdo->prepare("DELETE FROM servico WHERE id = ?");
+            $stm->execute([$id_servico]);
             return true;
         } catch (PDOException $e) {
+            error_log('Database error: ' . $e->getMessage());
             return false;
         }
     }
 }
+?>

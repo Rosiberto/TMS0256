@@ -1,9 +1,3 @@
-<?php 
-
-require_once '../backend/core/Auth.php';
-requireAuth();
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -133,18 +127,18 @@ fieldset.grupo .campo {
 
       <div class="btn-group" role="group">
         <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-          Olá, <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : ' Cliente'; ?>!
+          Olá, Cliente!
         </span>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item fs-4" href="LoginCliente.html">Minha conta</a></li>
-          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/backend/logout" onclick="">Sair</a></li> 
+          <li><a class="dropdown-item fs-4" onclick="">Sair</a></li> 
         </ul>
       </div>
     </nav>
 
     <!-- Atualização Financeira-->
     <div class="tela_cadastro">
-        <form action ="http://localhost/TMS0256/app/backend/cartao/novo" method = "post">
+        <form>
           <fieldset class="grupo">
               <!-- Campo do Número do Cartão -->
               <div class="campo">
@@ -164,7 +158,7 @@ fieldset.grupo .campo {
           <!-- Validade -->
           <div class="campo">
               <label for="validade"><strong>Validade</strong></label>
-              <input type="text" name="validade" id="validade" placeholder="01/2024" required>
+              <input type="email" name="validade" id="validade" placeholder="01/2024" required>
           </div>  
       </fieldset>  
       

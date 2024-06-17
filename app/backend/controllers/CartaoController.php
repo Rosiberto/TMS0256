@@ -32,7 +32,7 @@ class CartaoController extends RenderView
             }
 
             if ($this->cartao->create($cardNumber, $cvc, $validity)) {
-                header("location:http://localhost/TMS0256/app/front-end/LoginCliente.php");
+                echo "Cartão inserido com sucesso!";
             } else {
                 echo "Erro ao inserir o cartão.";
             }
@@ -74,9 +74,6 @@ class CartaoController extends RenderView
             return false; // O CVC não possui 3 ou 4 dígitos
         }
 
-        if (!preg_match('/^\d{2}\/\d{4}$/', $validity)) {
-            return false; // A validade não está no formato MM/AAAA
-        }
 
         // Outras verificações podem ser adicionadas aqui, como verificar o algoritmo de Luhn para o número do cartão
 

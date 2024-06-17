@@ -1,65 +1,66 @@
 <?php
-include_once("Database.php");
 
-class ReservaModel extends Database{
-    
+class ReservaModel extends Database {
+
     private $pdo;
 
     public function __construct() {
         $this->pdo = $this->getConnection();
     }
 
-    public function  fetch() {
-        $stm = $this->pdo->query("SELECT * FROM reserva");
-        if($stm->rowCount() > 0) {
-            return $stm->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            return [];
-        }
-    }
-    public function fetchById($id) {
-        $stm = $this->pdo->prepare("SELECT * FROM reserva WHERE id = ?");
-        $stm->execute([$id]);
-        return $stm->fetch(PDO::FETCH_ASSOC);
-    }
-    
-    public function create($check_in, $check_out, $valor_Pagamento, $quarto, $qtd_Pessoas) {
-        $stmt = $this->pdo->prepare("SELECT * FROM quarto WHERE ID = ?");
-        $stmt->execute([$quarto]);
-        if ($stmt->rowCount() === 0) {
-            return "Quarto não disponível!";
-        }
 
+    public function fetch() {
+        $stmt = $this->pdo->query("SELECT * FROM reserva");
+        return $stmt->fetchAll();
+    }
+
+    public function fetchById($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM reserva WHERE ID = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
+    public function create($check_in, $check_out, $servico, $valor_Pagamento, $quarto, $qtd_Pessoas) {
+        
         try {
-            $sql = "INSERT INTO reserva (Dt_Entrada, Dt_Saida, Valor_Pagamento, fk_Quarto_ID, Qtd_Pessoas) VALUES (?, ?, ?, ?, ?)";
-            $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute([$check_in, $check_out, $valor_Pagamento, $quarto, $qtd_Pessoas]);
-        } catch (PDOException $e) {
-            error_log('Database error: ' . $e->getMessage());
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare("INSERT INTO reserva (Qtd_Pessoa, Dt_Entrada, Dt_Saida, status) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$qtd_Pessoas, $check_in, $check_out, 1]);
+
+            $stmt = $this->pdo->prepare("INSERT INTO estadia (Dt_Entrada, Dt_Saida, Servico) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$check_in, $check_out, $servico]);
+
+            $reservaId = $this->pdo->lastInsertId();
+
+            $stmt = $this->pdo->prepare("INSERT INTO quarto_reserva (fk_Quarto_ID, fk_Reserva_ID) VALUES (?, ?)");
+            $stmt->execute([$quarto, $reservaId]);
+
+            $stmt = $this->pdo->prepare("INSERT INTO fatura (Dt_Pagamento, Valor_Pagamento) VALUES (?, ?)");
+            $stmt->execute([date('Y-m-d'), $valor_Pagamento]);
+            $faturaId = $this->pdo->lastInsertId();
+
+            $stmt = $this->pdo->prepare("INSERT INTO pode_ter_cliente_reserva_estadia (fk_Cliente_ID, fk_Reserva_ID, fk_Fatura_ID) VALUES (?, ?, ?)");
+            $stmt->execute([1, $reservaId, $faturaId]);
+
+            $this->pdo->commit();
+
+            return true;
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
             return false;
         }
     }
 
     public function update($id, $check_in, $check_out, $valor_Pagamento, $quarto, $qtd_Pessoas) {
-        try {
-            $sql = "UPDATE reserva SET Dt_Entrada = ?, Dt_Saida = ?, Valor_Pagamento = ?, fk_Quarto_ID = ?, Qtd_Pessoas = ? WHERE ID = ?";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$check_in, $check_out, $valor_Pagamento, $quarto, $qtd_Pessoas, $id]);
-            return $stmt->rowCount() > 0;
-        } catch (PDOException $e) {
-            error_log('Database error: ' . $e->getMessage());
-            return $e->getMessage();
-        }
+        $stmt = $this->pdo->prepare("UPDATE reserva SET Qtd_Pessoa = ?, Dt_Entrada = ?, Dt_Saida = ?, servico = ? WHERE ID = ?");
+        return $stmt->execute([$qtd_Pessoas, $check_in, $check_out, $servico, $id]);
     }
 
     public function delete($id) {
-      try {
-        $stm = $this->pdo->prepare("DELETE FROM reservas WHERE id = ?");
-        $stm->execute([$id]);
-        return true;
-      } catch (PDOException $e) {
-        return false;
-      }      
+        $stmt = $this->pdo->prepare("DELETE FROM reserva WHERE ID = ?");
+        return $stmt->execute([$id]);
     }
-
 }
+
+?>

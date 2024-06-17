@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$_SESSION['empresasList'] = $empresas;
+$_SESSION['empresaList'] = $empresaList;
 
 header('Location: http://localhost/TMS0256/app/front-end/cadastro.php');
 
