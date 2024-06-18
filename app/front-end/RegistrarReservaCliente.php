@@ -1,3 +1,14 @@
+<?php
+
+require_once '../backend/core/Auth.php';
+requireAuth();
+
+
+$cliente_id = $_SESSION['cliente_id'];
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -95,46 +106,48 @@
 <body>
     <!-- Barra de Navegação (Header)-->
     <nav class="navbar d-flex justify-content-evenly border fs-3">
-        <a class="nav-link active p-3" href="#">CRM4SH.com</a>          
-        <a class="nav-link active p-3" href="#informacoes">Informações</a>        
-        <a class="nav-link active p-3" href="#servicos">Serviços</a>
-        <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
-        <div class="btn-group" role="group">
-            <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-                Olá, Gestor!
-            </span>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item fs-4" href="#">Minha conta</a></li>
-                <li><a class="dropdown-item fs-4" href="#">Sair</a></li> 
-            </ul>
-        </div>
+      <a class="nav-link active p-3" href="#">CRM4SH.com</a>          
+      <a class="nav-link active p-3" href="#informacoes">Informações</a>        
+      <a class="nav-link active p-3" href="#servicos">Serviços</a>
+      <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
+
+      <div class="btn-group" role="group">
+        <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
+          Olá, <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : 'Cliente'; ?>!
+        </span>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/front-end/LoginCliente.php">Minha conta</a></li>
+          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/backend/logout">Sair</a></li> 
+        </ul>
+      </div>
     </nav>
+
     <div class="tela_cadastro">
         <form action="http://localhost/TMS0256/app/backend/reserva/novo" method="post">
             <fieldset class="grupo">
                 <div class="campo">
                     <label for="Dt_Entrada"><strong>Data de Entrada</strong></label>
-                    <input type="text" name="Dt_Entrada" id="Dt_Entrada" placeholder="25/05/2024" required>
+                    <input type="date" name="Dt_Entrada" id="Dt_Entrada" placeholder="25/05/2024" required>
                 </div>
                 <div class="campo">
                     <label for="Dt_Saida"><strong>Data de Saída</strong></label>
-                    <input type="text" name="Dt_Saida" id="Dt_Saida" placeholder="30/05/2024" required>
+                    <input type="date" name="Dt_Saida" id="Dt_Saida" placeholder="30/05/2024" required>
                 </div>
             </fieldset>
             <fieldset class="grupo">
-                <div class="campo">
-                    <label for="empresa"><strong>Empresa</strong></label>
-                    <input type="text" name="empresa" id="empresa" placeholder="EmpresaX" required>
-                </div>
                 <div class="campo">
                     <label for="qtd_Pessoas"><strong>Quantidade de pessoas</strong></label>
                     <input type="text" name="qtd_Pessoas" id="qtd_Pessoas" placeholder="Quantidade de Pessoas" required>
                 </div>
             </fieldset>
-            <div class="campo">
-              <label for="servico"><strong>Quantidade de pessoas</strong></label>
-              <input type="text" name="servico" id="servico" placeholder="servico" required>
-          </div>
+            <div class="form-group">
+            <label for="servicos">Serviços</label>
+            <select id="servicos" name="servico" required>
+                <option value="cafe-da-manha">Café da Manhã</option>
+                <option value="almoco">Almoço</option>
+                <option value="jantar">Jantar</option>
+                <option value="cafe-da-manha, almoco, jantar">Pacote Completo</option>
+            </select>
             </fieldset>
             <button class="botao" type="submit">Efetuar Reserva</button>
         </form>

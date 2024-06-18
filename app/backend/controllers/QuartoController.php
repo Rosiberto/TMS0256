@@ -21,7 +21,7 @@ class QuartoController extends RenderView {
 
     public function create() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $requiredFields = ['Numero', 'Capacidade_Pessoa', 'fk_Empresa_ID'];
+            $requiredFields = ['roomNumber', 'roomCapacity', 'roomCompany'];
 
             foreach ($requiredFields as $field) {
                 if (!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -30,9 +30,9 @@ class QuartoController extends RenderView {
                 }
             }
 
-            $numero = $_POST['Numero'];
-            $capacidadePessoa = $_POST['Capacidade_Pessoa'];
-            $fkEmpresaID = $_POST['fk_Empresa_ID'];
+            $numero = $_POST['roomNumber'];
+            $capacidadePessoa = $_POST['roomCapacity'];
+            $fkEmpresaID = $_POST['roomCompany'];
 
             $result = $this->quarto->create($numero, $capacidadePessoa, $fkEmpresaID);
             if ($result === true) {
@@ -41,7 +41,6 @@ class QuartoController extends RenderView {
                 echo "Desculpe, algo deu errado: " . $result;
             }
         }
-        $this->showCreateForm();
     }
 
     public function update($id) {
@@ -70,12 +69,6 @@ class QuartoController extends RenderView {
             }
         }
         $this->showCreateForm();
-    }
-
-    private function showCreateForm() {
-        $empresas= $this->quarto->fetchEmpresas();
-        error_log(print_r($empresas, true));
-        $this->loadView('quartoCreate', ['empresa' => $empresas]);
     }
 
     public function delete($id) {

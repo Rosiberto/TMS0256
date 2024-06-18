@@ -20,16 +20,13 @@ class ReservaModel extends Database {
         return $stmt->fetch();
     }
 
-    public function create($check_in, $check_out, $servico, $valor_Pagamento, $quarto, $qtd_Pessoas) {
+    public function create($check_in, $check_out, $valor_Pagamento, $quarto, $qtd_Pessoas) {
         
         try {
             $this->pdo->beginTransaction();
 
-            $stmt = $this->pdo->prepare("INSERT INTO reserva (Qtd_Pessoa, Dt_Entrada, Dt_Saida, status) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$qtd_Pessoas, $check_in, $check_out, 1]);
-
-            $stmt = $this->pdo->prepare("INSERT INTO estadia (Dt_Entrada, Dt_Saida, Servico) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$check_in, $check_out, $servico]);
+            $stmt = $this->pdo->prepare("INSERT INTO reserva (Qtd_Pessoa, Dt_Entrada, Dt_Saida, Valor_pagamento, Fk_Quarto_ID) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$qtd_Pessoas, $check_in, $check_out, $valor_Pagamento, $quarto]);
 
             $reservaId = $this->pdo->lastInsertId();
 
@@ -40,8 +37,6 @@ class ReservaModel extends Database {
             $stmt->execute([date('Y-m-d'), $valor_Pagamento]);
             $faturaId = $this->pdo->lastInsertId();
 
-            $stmt = $this->pdo->prepare("INSERT INTO pode_ter_cliente_reserva_estadia (fk_Cliente_ID, fk_Reserva_ID, fk_Fatura_ID) VALUES (?, ?, ?)");
-            $stmt->execute([1, $reservaId, $faturaId]);
 
             $this->pdo->commit();
 

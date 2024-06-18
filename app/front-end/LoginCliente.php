@@ -37,14 +37,14 @@ requireAuth();
       <a class="nav-link active p-3" href="#">CRM4SH.com</a>          
       <a class="nav-link active p-3" href="#informacoes">Informações</a>        
       <a class="nav-link active p-3" href="#servicos">Serviços</a>
-      <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
+      <a class="nav-link active p-3" href="imoveisFiltro.php">Imóveis Disponíveis</a>                      
 
       <div class="btn-group" role="group">
         <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
           Olá, <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : 'Cliente'; ?>!
         </span>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item fs-4" href="#">Minha conta</a></li>
+          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/front-end/LoginCliente.php">Minha conta</a></li>
           <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/backend/logout">Sair</a></li> 
         </ul>
       </div>
@@ -53,19 +53,19 @@ requireAuth();
     <!-- Botões no meio da tela -->
     <div class="center-vertical" style="margin-top: -50px;"> 
       <div class="d-flex justify-content-center mt-3">
-        <a href="ReservasCliente.html">
+        <a href="ReservasCliente.php">
           <button type="button" class="btn btn-light btn-lg me-2 custom-btn">
           <span class="text-dark">Reservas</span>
           </button>
         </a>
         
-        <a href="FinanceiroCliente.html">
+        <a href="FinanceiroCliente.php">
           <button type="button" class="btn btn-light btn-lg me-2 custom-btn">
           <span class="text-dark">Financeiro</span>
           </button>
         </a>
         
-        <a href="PerfilCliente.html">
+        <a href="PerfilCliente.php">
           <button type="button" class="btn btn-light btn-lg custom-btn">
             <span class="text-dark">Perfil</span>
           </button>

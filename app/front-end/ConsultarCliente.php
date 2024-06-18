@@ -1,3 +1,11 @@
+<?php 
+
+
+require_once '../backend/core/Auth.php';
+requireAuth();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

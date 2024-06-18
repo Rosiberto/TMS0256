@@ -35,7 +35,7 @@
                 Acessar
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item fs-4" href="Login.html">Acessar</a></li>
+                <li><a class="dropdown-item fs-4" href="Login.php">Acessar</a></li>
                 <li><a class="dropdown-item fs-4" href="cadastro.html">Cadastrar</a></li>
             </ul>
         </div>     

@@ -9,21 +9,22 @@
   <body>
     <!-- Barra de Navegação (Header)-->
     <nav class="navbar d-flex justify-content-evenly border fs-3">
-      <a class="nav-link active p-3" aria-current="page" href="home.html">CRM4SH.com</a>          
-      <a class="nav-link active p-3" aria-current="page" href="home.html#informacoes">Informações</a>        
-      <a class="nav-link active p-3" href="home.html#servicos">Serviços</a>
-      <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
-        
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-          Login
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item fs-4" href="Login.html">Acessar</a></li>
-          <li><a class="dropdown-item fs-4" href="cadastro.html">Cadastrar</a></li>
-        </ul>
-      </div>
+        <a class="nav-link active p-3" aria-current="page" href="home.html">CRM4SH.com</a>          
+        <a class="nav-link active p-3" aria-current="page" href="home.html#informacoes">Informações</a>        
+        <a class="nav-link active p-3" href="home.html#servicos">Serviços</a>
+        <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
+              Cadastrar
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item fs-4" href="Login.php">Acessar</a></li>
+              <li><a class="dropdown-item fs-4" href="cadastro.php">Cadastrar</a></li>
+            </ul>
+        </div>     
     </nav>
+
     <div class="conteiner-sm pt-3 m-auto" style="width: 80%;">
          
           <div class="d-flex mt-3 align-items-center">

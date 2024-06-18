@@ -1,9 +1,12 @@
 <?php
-session_start();
-$empresas = $_SESSION['empresasList'];
-$funcoesEmpregado = $_SESSION['funcoesList'] ;
-?>
 
+require_once '../backend/core/Auth.php';
+requireAuth();
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -133,11 +136,11 @@ $funcoesEmpregado = $_SESSION['funcoesList'] ;
 
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-              Cadastrar
+            Olá, <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : 'Funcionario'; ?>!
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item fs-4" href="Login.html">Acessar</a></li>
-              <li><a class="dropdown-item fs-4" href="Login.html">Cadastrar</a></li>
+              <li><a class="dropdown-item fs-4" href="Login.php">Acessar</a></li>
+              <li><a class="dropdown-item fs-4" href="cadastro.php">Cadastrar</a></li>
             </ul>
         </div>     
     </nav>
@@ -153,47 +156,32 @@ $funcoesEmpregado = $_SESSION['funcoesList'] ;
                 <input type="text" name="nome" id="nome" placeholder="Nome" required>
             </div>
 
-        <div class="campo">
-            <label><strong>Empresa</strong></label>
-            <select id="empresa" name="fkEmpresa">        
-                <?php if($empresas):?>        
-                    <?php foreach( $empresas as $empresa):?>
-                        <option value="<?php echo $empresa['ID'];?>"><?php echo $empresa['Nome'];?></option>
-                    <?php endforeach;?>
-                <?php else:?>    
-                    <option disabled value="null">Sem empresa cadastrada</option>
-                <?php endif;?>
-           
-            </select>
-
             <div class="campo">
             <label><strong>Função</strong></label>
-            <select id="empresa" name="fkFuncaoEmpregado">        
-                <?php if($funcoesEmpregado):?>        
-                    <?php foreach( $funcoesEmpregado as $funcao):?>
-                        <option value="<?php echo $funcao['ID'];?>"><?php echo $funcao['Nome_Funcao'];?></option>
-                    <?php endforeach;?>
-                <?php else:?>    
-                    <option disabled value="null">Sem empresa cadastrada</option>
-                <?php endif;?>
-           
+            <select id="empresa" name="fkFuncaoEmpregado">             
+                        <option value="1">Recepcionista</option>
+                        <option value="2">Gerente</option>    
             </select>
-   
+    
         </div>
-
-    </fieldset>
-
-          <fieldset class="grupo">
-                <div class="campo">
-                    <label for="usuario"><strong>Nome de usuário</strong></label>
-                    <input type="usuario" name="usuario" id="usuario" placeholder="Informe o usuario" required>
-                </div>
-                <div class="campo">
-                    <label for="senha"><strong>Insira sua senha</strong></label>
-                    <input type="password" name="senha" id="senha" placeholder="Informe sua senha" required>
-                </div>
-
+            
+        </fieldset>
+        
+        <fieldset class="grupo">
+            <div class="campo">
+                <label for="usuario"><strong>Nome de usuário</strong></label>
+                <input type="usuario" name="usuario" id="usuario" placeholder="Informe o usuario" required>
+            </div>
+            <div class="campo">
+                <label for="senha"><strong>Insira sua senha</strong></label>
+                <input type="password" name="senha" id="senha" placeholder="Informe sua senha" required>
+            </div>
           </fieldset>
+
+          <div class="campo">
+                <label for="senha"><strong>Insira ID Empresa</strong></label>
+                <input type="text" name="fkEmpresa" id="fkEmpresa" placeholder="Informe id de sua empresa" required>
+
         <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
         <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
     </form>

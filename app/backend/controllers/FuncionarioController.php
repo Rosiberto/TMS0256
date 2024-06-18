@@ -40,17 +40,16 @@ class FuncionarioController extends RenderView {
             $senha = $_POST['senha'];
             
             $loginId = $this->login->create($login, $senha);
-          
-            $this->funcionario->create($nome, $fkEmpresa, $fkFuncaoEmpregado, $loginId );
-          
-            } else {
-                $empresas = $this->empresa->fetchAll();
-                $this->loadView("FuncionarioCreate", ['empresas' => $empresas, 'funcoesEmpregado' => $funcoesEmpregado]);
-                $funcoesEmpregado = $this->funcionario->getFuncoesEmpregado();
-                $this->loadView("FuncionarioCreate", ['funcionario' => $funcoesEmpregado]);
-            }
-        } 
 
+          
+            $result = $this->funcionario->create($nome, $fkEmpresa, $fkFuncaoEmpregado, $loginId );
+            if ($result === true) {
+                echo "Funcionário  com sucesso!";
+            } else {
+                echo "Desculpa, algo deu errado: " . $result;
+        }    
+    }
+    }
         public function update($id) {
             $id_funcionario = $id[0];
 
@@ -75,14 +74,11 @@ class FuncionarioController extends RenderView {
                 $loginId = $this->login->update($id_funcionario, $login, $senha);
               
                 $this->funcionario->update($id_funcionario, $nome, $fkEmpresa, $fkFuncaoEmpregado, $loginId );
-              
-                } else {
-                    $empresas = $this->empresa->fetchAll();
-                    $this->loadView("FuncionarioEdit", ['empresas' => $empresas, 'funcoesEmpregado' => $funcoesEmpregado]);
-                    $funcoesEmpregado = $this->funcionario->getFuncoesEmpregado();
-                    $this->loadView("FuncionarioEdit", ['funcionario' => $funcoesEmpregado]);
-                }
+
+                $empresas = $this->empresa->fetchAll();
+                $this->loadView("FuncionarioEdit", ['empresas' => $empresas]);
             } 
+        }
 
             public function delete($id) {
                 $id_funcionario = $id[0];
@@ -97,11 +93,5 @@ class FuncionarioController extends RenderView {
         }
     
     }
-    
-    
-
-    // private function showCreateForm() {
-    //     $empresas = $this->FuncionarioModel->getEmpresas();
-    // }
-
+   
 

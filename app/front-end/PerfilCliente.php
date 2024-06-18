@@ -1,3 +1,15 @@
+<?php
+
+require_once '../backend/core/Auth.php';
+requireAuth();
+
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -123,22 +135,22 @@ fieldset.grupo .campo {
       <a class="nav-link active p-3" href="#">CRM4SH.com</a>          
       <a class="nav-link active p-3" href="#informacoes">Informações</a>        
       <a class="nav-link active p-3" href="#servicos">Serviços</a>
-      <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
+      <a class="nav-link active p-3" href="imoveisFiltro.php">Imóveis Disponíveis</a>                      
 
       <div class="btn-group" role="group">
         <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-          Olá, Cliente!
+          Olá, <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : 'Cliente'; ?>!
         </span>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item fs-4" href="LoginCliente.html">Minha conta</a></li>
-          <li><a class="dropdown-item fs-4" onclick="">Sair</a></li> 
+          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/front-end/LoginCliente.php">Minha conta</a></li>
+          <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/backend/logout">Sair</a></li> 
         </ul>
       </div>
     </nav>
 
     <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
-        <form action="http://localhost/TMS0256/app/backend/cliente/editar{$_SESSION['cliente_id']}" method="post">
+        <form action="http://localhost/TMS0256/app/backend/cliente/editar/<?php echo $cliente_id; ?>" method="post">
           <fieldset class="grupo">
               <!-- Campo do nome -->
               <div class="campo" >
@@ -179,7 +191,7 @@ fieldset.grupo .campo {
               <!-- Campo de CPF -->
             <div class="campo">
               <label for="CPF"><strong>CPF</strong></label>
-              <input type="cpf" name="cpf" id="cpf" placeholder="Informe o CPF" required>
+              <input type="text" name="cpf" id="cpf" placeholder="Informe o CPF" required>
             </div> 
   
             <!--Combo-Box para escolha de sexo
@@ -196,7 +208,7 @@ fieldset.grupo .campo {
             <fieldset class="grupo">
                 <div class="campo">
                     <label for="morada"><strong>Morada</strong></label>
-                    <input type="morada" name="morada" id="morada" placeholder="Informe sua Morada" required>
+                    <input type="text" name="morada" id="morada" placeholder="Informe sua Morada" required>
                 </div>
             <!-- Combo-Box de Estado -->
                 <div class="campo">
@@ -234,6 +246,7 @@ fieldset.grupo .campo {
                         <option value="EX">Estrangeiro</option>-->
                     </select>
                 </div>
+
         </fieldset>   
         <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
         <button class="botao" type="submit" onsubmit="">Salvar</button>            

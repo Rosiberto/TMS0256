@@ -1,3 +1,12 @@
+<?php 
+
+
+
+require_once '../backend/core/Auth.php';
+requireAuth();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,10 +15,22 @@
     <title>CRM Hotelaria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-
+      .center-vertical {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 90vh;
+      }
+      .custom-btn {
+        border-radius: 15px; 
+        background-color: #8DBAC8; 
+        font-weight: bold; 
+        font-size: 25px; 
+      }
 
                 /* Todos os elementos da página */
-      * {
+                * {
             margin: 0;
             padding: 0;
         }
@@ -113,51 +134,64 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
   
         }
-
-
     </style>
 </head>
-<body>
+  <body>
     <!-- Barra de Navegação (Header)-->
     <nav class="navbar d-flex justify-content-evenly border fs-3">
-        <a class="nav-link active p-3" aria-current="page" href="home.html">CRM4SH.com</a>          
-        <a class="nav-link active p-3" aria-current="page" href="home.html#informacoes">Informações</a>        
-        <a class="nav-link active p-3" href="home.html#servicos">Serviços</a>
-        <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
+      <a class="nav-link active p-3" href="#">CRM4SH.com</a>          
+      <a class="nav-link active p-3" href="#informacoes">Informações</a>        
+      <a class="nav-link active p-3" href="#servicos">Serviços</a>
+      <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
 
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-              Cadastrar
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item fs-4" href="Login.php">Acessar</a></li>
-              <li><a class="dropdown-item fs-4" href="cadastro.php">Cadastrar</a></li>
-            </ul>
-        </div>     
+      <div class="btn-group" role="group">
+        <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
+          Olá, Gestor!
+        </span>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item fs-4" href="#">Minha conta</a></li>
+          <li><a class="dropdown-item fs-4" href="#">Sair</a></li> 
+        </ul>
+      </div>
     </nav>
-
-
-    <!-- Cadastro de cliente-->
+    
     <div class="tela_cadastro">
-      <form>
-        <fieldset class="grupo">
-            <!-- Campo do nome -->
-            <div class="campo">
-                <label for="matricula"><strong>Matricula ID</strong></label>
-                <input type="text" name="matricula" id="matricula" placeholder="Matricula" required>
-            </div>
+      <form action="http://localhost/TMS0256/app/backend/estadia/<?php $servico = $_POST['servico']; ?>" method="post">
+          <fieldset class="grupo">
+              <div class="campo">
 
-            <!-- Campo do sobrenome -->
-            <div class="campo">
-                <label for="documento"><strong>Documento</strong></label>
-                <input type="text" name="documento" id="documento" placeholder="Documento Cadastrado" required>
-            </div>
-        </fieldset> 
+              <div class="campo">
+                  <label for="ID"><strong>ID SERVIÇO</strong></label>
+                  <input type="text" name="servico" id="empresa" placeholder="servico" required>
+              </div>
 
-        <button class="botao" type="submit" onsubmit="">Procurar</button>            
-    </form>
-    </div>
+                  <label for="Dt_Entrada"><strong>Data de Entrada</strong></label>
+                  <input type="text" name="Dt_Entrada" id="Dt_Entrada" placeholder="25/05/2024" required>
+              </div>
+              <div class="campo">
+                  <label for="Dt_Saida"><strong>Data de Saída</strong></label>
+                  <input type="text" name="Dt_Saida" id="Dt_Saida" placeholder="30/05/2024" required>
+              </div>
+          </fieldset>
+          <fieldset class="grupo">
+              <div class="campo">
+                  <label for="empresa"><strong>Empresa</strong></label>
+                  <input type="text" name="empresa" id="empresa" placeholder="EmpresaX" required>
+              </div>
+              <div class="campo">
+                  <label for="qtd_Pessoas"><strong>Quantidade de pessoas</strong></label>
+                  <input type="text" name="qtd_Pessoas" id="qtd_Pessoas" placeholder="Quantidade de Pessoas" required>
+              </div>
+          </fieldset>
+          <div class="campo">
+            <label for="servico"><strong>Quantidade de pessoas</strong></label>
+            <input type="text" name="servico" id="servico" placeholder="servico" required>
+        </div>
+          </fieldset>
+          <button class="botao" type="submit">Efetuar Reserva</button>
+      </form>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>

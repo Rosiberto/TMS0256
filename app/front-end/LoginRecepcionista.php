@@ -38,7 +38,7 @@ requireAuth();
 
       <div class="btn-group" role="group">
         <span class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
-        Olá, <?= $_SESSION['usuario_login'] ; ?>!
+          Olá, <?= $_SESSION['usuario_login'] ? $_SESSION['usuario_login'] : 'Funcionario'; ?>!
         </span>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item fs-4" href="http://localhost/TMS0256/app/backend/logout">Sair</a></li> 
@@ -50,10 +50,10 @@ requireAuth();
     <div class="center-vertical" style="margin-top: -50px;">         
       <h1 class="m-4">Configuração</h1>
       <div>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="DadosDaEmpresa.html" role="button">Dados da Empresa</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarServicos.html" role="button">Atualizar Serviços</a>
+        <!--<a class="btn btn-light btn-lg me-2 custom-btn" href="DadosDaEmpresa.html" role="button">Dados da Empresa</a>-->
+        <!--<a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarServicos.html" role="button">Atualizar Serviços</a>-->
         <a class="btn btn-light btn-lg me-2 custom-btn" href="CadastroEmpregado.php" role="button">Cadastro de Empregado</a>
-        <a class="btn btn-light btn-lg me-2 custom-btn" href="administrar_Quarto.php" role="button">Administrar Quartos</a>
+        <!--<a class="btn btn-light btn-lg me-2 custom-btn" href="AtualizarQuartos.html" role="button">Administrar Quartos</a>-->
       </div>
 
       <h1 class="m-4">Registro de Clientes</h1>

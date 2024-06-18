@@ -12,15 +12,15 @@
       <a class="nav-link active p-3" href="#">CRM4SH.com</a>          
       <a class="nav-link active p-3" href="#informacoes">Informações</a>        
       <a class="nav-link active p-3" href="#servicos">Serviços</a>
-      <a class="nav-link active p-3" href="imoveisFiltro.html">Imóveis Disponíveis</a>                      
+      <a class="nav-link active p-3" href="imoveisFiltro.php">Imóveis Disponíveis</a>                      
         
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-dark dropdown-toggle fs-4" data-bs-toggle="dropdown" aria-expanded="false">
           Login
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item fs-4" href="Login.html">Acessar</a></li>
-          <li><a class="dropdown-item fs-4" href="cadastro.html">Cadastrar</a></li>
+          <li><a class="dropdown-item fs-4" href="Login.php">Acessar</a></li>
+          <li><a class="dropdown-item fs-4" href="cadastro.php">Cadastrar</a></li>
         </ul>
       </div>
 

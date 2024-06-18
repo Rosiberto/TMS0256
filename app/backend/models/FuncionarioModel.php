@@ -37,7 +37,7 @@ class FuncionarioModel extends Database {
         
             $sql = "INSERT INTO empregado (Nome, fk_Empresa_ID, fk_Funcao_Empregado_ID, fk_Login_ID) VALUES (?, ?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
-            $stm->execute([$nome, $fkEmpresa,  $fkFuncaoEmpregado, $loginId]);
+            $stm->execute([$nome, $fkEmpresa, $fkFuncaoEmpregado, $loginId]);
       
             if ($stm->rowCount() > 0) {
                 return true;
@@ -48,12 +48,6 @@ class FuncionarioModel extends Database {
             error_log('Database error: ' . $e->getMessage());
             return false;
         }
-    }
-
-    public function getFuncoesEmpregado() {
-        $stmt = $this->pdo->prepare("SELECT ID, Nome_Funcao FROM funcao_empregado");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
@@ -89,8 +83,6 @@ class FuncionarioModel extends Database {
     public function getEmpresas() {
             $stmt = $this->pdo->prepare("SELECT id, nome  FROM empresa");
             $stmt->execute();
-
-            $empresas = [];
             while($row = $stmt->fetchAll(PDO::FETCH_ASSOC)){
                 $empresas = $row;
             }

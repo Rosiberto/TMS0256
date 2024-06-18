@@ -1,7 +1,3 @@
-<?php
-session_start();
-$empresaList = $_SESSION['empresaList'];
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -135,8 +131,8 @@ $empresaList = $_SESSION['empresaList'];
               Cadastrar
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item fs-4" href="Login.html">Acessar</a></li>
-              <li><a class="dropdown-item fs-4" href="Login.html">Cadastrar</a></li>
+              <li><a class="dropdown-item fs-4" href="Login.php">Acessar</a></li>
+              <li><a class="dropdown-item fs-4" href="cadastro.php">Cadastrar</a></li>
             </ul>
         </div>     
     </nav>
@@ -145,101 +141,106 @@ $empresaList = $_SESSION['empresaList'];
     <!-- Cadastro de cliente-->
     <div class="tela_cadastro">
       <form action="http://localhost/TMS0256/app/backend/cliente/novo" method="post">
-        <fieldset class="grupo">
-            <!-- Campo do nome -->
-            <div class="campo">
-                <label for="nome"><strong>Nome</strong></label>
-                <input type="text" name="nome" id="nome" placeholder="Nome" required>
-            </div>
-
-
-        <fieldset class="grupo">
-        <!-- Campo de email -->
-        <div class="campo">
-            <label for="email"><strong>Email</strong></label>
-            <input type="email" name="email" id="login" placeholder="email@exemplo.com" required>
-        </div>
-
-
-        <!-- Campo de telefone -->
-        <div class="campo">
-            <label for="telefone"><strong>Telefone</strong></label>
-            <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
-        </div>
-    </fieldset>
-
-    <fieldset class="grupo">
-            <!-- Campo de CPF -->
-        <div class="campo">
-            <label for="CPF"><strong>CPF</strong></label>
-            <input type="cpf" name="cpf" id="cpf" placeholder="Informe o CPF" required>
-        </div>
-
-        <label for="dataNascimento">Data de Nascimento:</label><br>
-        <input type="date" id="dataNascimento" name="dataNascimento" required><br><br>
-
-
-        <div class="campo">
-            <label><strong>Empresa</strong></label>
-            <select id="empresa" name="empresa">        
-                <?php if($ $empresaList):?>        
-                    <?php foreach($empresaList as $empresa):?>
-                        <option value="<?php echo $empresa['ID'];?>"><?php echo $empresa['Nome'];?></option>
-                    <?php endforeach;?>
-                <?php else:?>    
-                    <option disabled value="null">Sem empresa cadastrada</option>
-                <?php endif;?>
-           
-            </select>
-   
-        </div>
-
-    </fieldset>
-
-    <label for="morada">Morada:</label><br>
-        <input type="text" id="morada" name="morada" required><br><br>
-        
-
-    <fieldset class="grupo">
-
-               <!-- Combo-Box de Estado -->
-               <div class="campo">
-              <label><strong>Estado</strong></label>
-              <select id="estado" name="nacionalidade">
-                <option value="Br">Brasileiro</option>
-                <option value="Other">Outros</option>
-                <!-- <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-                <option value="EX">Estrangeiro</option> -->
-            </select>
-            </div>
-          </fieldset>
-          
+          <!-- Cadastro de cliente-->
           <fieldset class="grupo">
+              <!-- Campo do nome -->
+              <div class="campo" >
+                <label for="nome"><strong>Nome Completo</strong></label>
+                <input type="text" name="nome" id="nome" placeholder="Nome" required style="width: 400px;">
+            </div>
+
+            <!-- Campo do sobrenome 
+            <div class="campo">
+                <label for="sobrenome"><strong>Sobrenome</strong></label>
+                <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>
+            </div>-->
+          </fieldset> 
+  
+  
+          <fieldset class="grupo">
+          <!-- Campo de email -->
+          <div class="campo">
+              <label for="email"><strong>Email</strong></label>
+              <input type="email" name="email" id="login" placeholder="email@exemplo.com" required>
+          </div>
+  
+  
+          <!-- Campo de telefone -->
+          <div class="campo">
+              <label for="telefone"><strong>Telefone</strong></label>
+              <input type="telefone" name="telefone" id="tel" placeholder="DDD + número" required>
+          </div>
+
+           <!-- Campo de Data de Nascimento -->
+        <div class="campo">
+            <label for="dataNascimento"><strong>Data de Nascimento</strong></label>
+            <input type="date" name="dataNascimento" id="dataNascimento" style="width: 200px;" required>
+        </div>
+            </fieldset>
+  
+            <fieldset class="grupo">
+              <!-- Campo de CPF -->
+            <div class="campo">
+              <label for="CPF"><strong>CPF</strong></label>
+              <input type="cpf" name="cpf" id="cpf" placeholder="Informe o CPF" required>
+            </div> 
+  
+            <!--Combo-Box para escolha de sexo
+            <div class="campo">
+                <label><strong>Sexo</strong></label>
+                <select id="sexo" name="sexo">
+                    <option value="m">Masculino</option>
+                    <option value="f">Feminino</option>
+                    <option value="o">Outro</option>
+                </select>
+            </div>  -->
+            </fieldset>
+
+            <fieldset class="grupo">
+                <div class="campo">
+                    <label for="morada"><strong>Morada</strong></label>
+                    <input type="texto" name="morada" id="morada" placeholder="Informe sua Morada" required>
+                </div>
+                <fieldset class="grupo">
+                <div class="campo">
+                    <input type="hidden" name="empresa" id="morada" placeholder="Informe sua Morada" value="1" required>
+                </div>
+            <!-- Combo-Box de Estado -->
+                <div class="campo">
+                    <label><strong>Nacionalidade</strong></label>
+                    <select id="nacionalidade" name="nacionalidade">
+                        <option value="-">-</option>
+                        <option value="br">brasileiro</option>
+                        <!--<option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="EX">Estrangeiro</option>-->
+                    </select>
+                </div>
                 <div class="campo">
                     <label for="usuario"><strong>Nome de usuário</strong></label>
                     <input type="usuario" name="usuario" id="usuario" placeholder="Informe o usuario" required>
@@ -248,10 +249,12 @@ $empresaList = $_SESSION['empresaList'];
                     <label for="senha"><strong>Insira sua senha</strong></label>
                     <input type="password" name="senha" id="senha" placeholder="Informe sua senha" required>
                 </div>
-
-          </fieldset>
+                
+        </fieldset>   
         <!-- Botão para conclusão do cadastro / Ao cadastrar o sistema gera a senha automaticamente-->
-        <button class="botao" type="submit" onsubmit="">Cadastrar</button>            
+        <button class="botao" type="submit" onsubmit="">Salvar</button>            
+        </form>
+    </div>            
     </form>
     </div>
 

@@ -1,5 +1,5 @@
 <?php
-class ClientModel extends Database{
+class  ClientModel extends Database{
     
     private $pdo;
 
@@ -37,10 +37,10 @@ class ClientModel extends Database{
         }
     }
   
-    public function update($id, $name, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento) {
+    public function update($id_cliente, $name, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento) {
       try {
           $stm = $this->pdo->prepare("UPDATE cliente SET Nome = ?, Email = ?, Telefone = ?, Morada = ?, Documento = ?, Nacionalidade = ?, Dt_Nascimento = ? WHERE id = ?");
-          $stm->execute([$name, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $id]);
+          $stm->execute([$name, $email, $telefone, $morada, $documento, $nacionalidade, $dataNascimento, $id_cliente]);
           return true;
       } catch (PDOException $e) {
           error_log('Database error: ' . $e->getMessage());
@@ -50,7 +50,7 @@ class ClientModel extends Database{
 
     public function delete($id) {
       try {
-        $stm = $this->pdo->prepare("DELETE FROM clientes WHERE id = ?");
+        $stm = $this->pdo->prepare("DELETE FROM cliente WHERE id = ?");
         $stm->execute([$id]);
         return true;
       } catch (PDOException $e) {
